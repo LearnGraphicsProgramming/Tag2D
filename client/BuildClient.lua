@@ -20,16 +20,17 @@ project "Client"
 	{
 		"src",
 		"external",
-		--"external/glad/include",
-		--"external/glfw/include",
+		"external/glad/include",
+		"external/glfw/include",
+		"../common/src",
 		--"../common/external/glm"
 		--"external/ImGui"
 	}
 
 	links
 	{
-		--"glad",
-		--"glfw",
+		"glad",
+		"glfw",
 		--"ImGui"
 	}
 
@@ -93,19 +94,19 @@ project "Client"
 
 		links
 		{
-			--"glad",
-			--"glfw",
+			"glad",
+			"glfw",
 			--"ImGui",
-			--"GL",
-			--"X11",
-			--"Xi",
-			--"Xrandr",
-			--"Xxf86vm",
-			--"Xinerama",
-			--"Xcursor",
-			--"rt",
-			--"m",
-			--"pthread"
+			"GL",
+			"X11",
+			"Xi",
+			"Xrandr",
+			"Xxf86vm",
+			"Xinerama",
+			"Xcursor",
+			"rt",
+			"m",
+			"pthread"
 		}
 
 		defines

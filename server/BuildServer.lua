@@ -20,6 +20,7 @@ project "Server"
 	{
 		"src",
 		"external",
+		"../common/src",
 		--"../common/external/glm"
 	}
 
