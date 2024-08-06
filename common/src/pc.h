@@ -10,7 +10,7 @@
 #define WINDOWS
 #else // _WINX86
 #error Platform Windows x86 not supported
-#endif // WINDOWS
+#endif // _WIN64
 
 #elif __APPLE__
 #define APPLE
