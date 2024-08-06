@@ -1,6 +1,9 @@
-#include <iostream>
+#include <memory>
+#include "Server.h"
 
 int main()
 {
-    std::cout << "Hello, Server!\n";
+	std::unique_ptr<Tag2D::Server> server = std::make_unique<tag::Server>();
+
+	server.reset();
 }
