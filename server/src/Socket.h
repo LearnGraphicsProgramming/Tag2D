@@ -1,9 +1,14 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 
-// Multi-platform Socket object
-class Socket
-{
-};
 
+namespace Tag2D
+{
+	// Multi-platform Socket object
+	class Socket
+	{
+		Socket();
+		~Socket();
+	};
+}
 #endif // SOCKET_H
