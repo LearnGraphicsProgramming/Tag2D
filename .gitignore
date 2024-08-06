@@ -26,5 +26,6 @@
 *.out
 *.app
 
-# Build
-./build
+# Visual Studio generated files
+*.sln
+.vs
