@@ -3,4 +3,12 @@
 Tag2D Description..
 
 # Build
-Tag2D it's available on Linux, MacOS and Windows and can be builded with Premake beta-5.0.0.
+To generate your preferred build files, navigate into the `scripts/` directory and run your preferred script.
+
+Visual Studio 2022: [`GenerateVS2022.bat`](scripts/GenerateVS2022.bat)
+
+Windows GNU Make: [`GenerateWindowsMake.bat`](scripts/GenerateWindowsMake.bat)
+
+Linux GNU Make: [`GenerateLinuxMake.sh`](scripts/GenerateLinuxMake.sh)
+
+MacOS GNU Make: [`GenerateMacOSMake.sh`](scripts/GenerateMacOSMake.sh)
