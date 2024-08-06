@@ -1,32 +1,24 @@
 workspace "Tag2D"
-    configurations { "Debug", "Release" }
+	architecture "x64"
+	configurations { "Debug", "Release", "Dist" } -- Debug, Release, Distribution. Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
+	startproject "Client"
 
-    project "Client"
-        kind "ConsoleApp"
-        language "C++"
-        location "build/client"
-        files { "./client/src/*" }
-        targetdir "bin/%{cfg.buildcfg}"
+	-- Workspace-wide build options for MSVC
+	filter "system:windows"
+		buildoptions { "/EHsc", "/Zc:preprocessor", "/Zc:__cplusplus" }
 
-        filter "configurations:Debug"
-           defines { "DEBUG" }
-           symbols "On"
-     
-        filter "configurations:Release"
-           defines { "NDEBUG" }
-           optimize "On"
+	flags { "MultiProcessorCompile" }
 
-    project "Server"
-        kind "ConsoleApp"
-        language "C++"
-        location "build/server"
-        files { "./server/src/*" }
-        targetdir "bin/%{cfg.buildcfg}"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-        filter "configurations:Debug"
-           defines { "DEBUG" }
-           symbols "On"
-     
-        filter "configurations:Release"
-           defines { "NDEBUG" }
-           optimize "On"
+group "Game"
+	include "client/BuildClient.lua"
+	include "server/BuildServer.lua"
+	include "common/BuildCommon.lua"
+group ""
+
+group "Dependencies"
+	--include "client/external/glad/premake5.lua"
+	--include "client/external/glfw/premake5.lua"
+	--include "client/external/ImGui/premake5.lua"
+group ""
