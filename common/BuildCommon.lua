@@ -3,7 +3,6 @@ project "Common"
 	kind "None"
 	language "C++"
 	cppdialect "C++20"
-	staticruntime "Off"
 
 	files
 	{
