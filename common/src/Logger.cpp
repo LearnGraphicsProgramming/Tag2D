@@ -74,7 +74,7 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cerr << m_Options->warning_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cout << m_Options->warning_prefix << "!y (" << FILE_NAME << "::" << LINE << "):!w " << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
     }
 
     void Logger::error(const char* fmt ...)
@@ -86,7 +86,10 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cerr << m_Options->error_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cerr << m_Options->error_prefix << "\n";
+        std::cerr << "!r- File:!w " << FILE_NAME << "\n";
+        std::cerr << "!r- Function:!w " << FUNCTION_NAME << "\n";
+        std::cerr << "!r- Line:!w " << FILE_NAME << LOGGER_DEFAULT_COLOR << "\n";
     }
 
     std::string Logger::AddColorToText(const char* buffer)
@@ -97,7 +100,7 @@ namespace Tag2D
                 << FUNCTION_NAME
                 << "::"
                 << LINE
-                << "] Buffer length has exceeded the maximum value: "
+                << "] Logger::Buffer length has exceeded the maximum value: "
                 << LOGGER_MAX_BUFFER_LENGTH
                 << "\n";
 
