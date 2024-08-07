@@ -47,7 +47,7 @@ namespace Tag2D
     void Logger::Init(std::shared_ptr<LoggerOptions> options)
     {
         options->info_prefix = AddColorToText(options->info_prefix.c_str());
-        options->warning_prefix= AddColorToText(options->warning_prefix.c_str());
+        options->warning_prefix = AddColorToText(options->warning_prefix.c_str());
         options->error_prefix = AddColorToText(options->error_prefix.c_str());
         
         m_Options = std::move(options);
