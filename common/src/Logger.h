@@ -1,8 +1,6 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
-#include "pc.h"
-
 #include <iostream>
 #include <source_location>
 #include <cstdarg>
@@ -19,6 +17,8 @@
 #define log_info(...) Tag2D::Logger::Instance().info(__VA_ARGS__);
 #define log_warning(...) Tag2D::Logger::Instance().warning(__VA_ARGS__);
 #define log_error(...) Tag2D::Logger::Instance().error(__VA_ARGS__);
+
+// TODO: Save the errors under logs directory.
 
 namespace Tag2D
 {
