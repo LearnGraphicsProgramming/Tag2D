@@ -1,8 +1,9 @@
-project "Common"
+project "common"
 	location "../common"
-	kind "None"
+	kind "StaticLib"
 	language "C++"
 	cppdialect "C++20"
+	staticruntime "Off"
 
 	files
 	{
@@ -15,7 +16,7 @@ project "Common"
 	includedirs
 	{
 		"src",
-		"external"
+		-- "external"
 	}
 
 	postbuildcommands

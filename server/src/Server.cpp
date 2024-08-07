@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "Logger.h"
 #include <iostream>
 
 namespace Tag2D
@@ -20,7 +21,7 @@ namespace Tag2D
 
 		if (!m_Socket.Init(address, port))
 		{
-			log_critical("Server can't be initialized because of socket error.");
+			log_error("Server can't be initialized because of socket error.");
 			return;
 		}
 

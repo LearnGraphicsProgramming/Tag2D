@@ -13,7 +13,11 @@ project "Server"
 		"src/**.h",
 		"src/**.c",
 		"src/**.hpp",
-		"src/**.cpp"
+		"src/**.cpp",
+		"../common/src/**.c",
+		"../common/src/**.h",
+		"../common/src/**.cpp",
+		"../common/src/**.hpp",
 	}
 
 	includedirs

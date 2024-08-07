@@ -2,7 +2,6 @@
 #define SERVER_H
 
 #include "pc.h"
-#include "Logger.h"
 
 #include <cstdint>
 #include <functional>
