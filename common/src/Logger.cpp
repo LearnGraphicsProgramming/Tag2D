@@ -49,13 +49,14 @@ namespace Tag2D
         options->info_prefix = AddColorToText(options->info_prefix.c_str());
         options->warning_prefix = AddColorToText(options->warning_prefix.c_str());
         options->error_prefix = AddColorToText(options->error_prefix.c_str());
-        
+
         m_Options = std::move(options);
     }
 
     void Logger::info(const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
+
         va_list args;
         va_start(args, fmt);
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
@@ -67,17 +68,19 @@ namespace Tag2D
     void Logger::warning(const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
+
         va_list args;
         va_start(args, fmt);
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cerr << m_Options->warning_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR <<  "\n";
- 	}
+        std::cerr << m_Options->warning_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+    }
 
     void Logger::error(const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
+
         va_list args;
         va_start(args, fmt);
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
@@ -91,18 +94,17 @@ namespace Tag2D
         if (strlen(buffer) > LOGGER_MAX_BUFFER_LENGTH)
         {
             std::cerr << "[CRITICAL INTERNAL ERROR: "
-			   	   	  << FUNCTION_NAME 
-					  << "::" 
-					  << LINE 
-					  << "] Buffer length has exceeded the maximum value: " 
-					  << LOGGER_MAX_BUFFER_LENGTH << "\n";
+                << FUNCTION_NAME
+                << "::"
+                << LINE
+                << "] Buffer length has exceeded the maximum value: "
+                << LOGGER_MAX_BUFFER_LENGTH
+                << "\n";
+
             return std::string(" -[ERROR]- ");
         }
 
         std::string stringBuffer(buffer);
-
-        constexpr uint8_t FIXED_KEY_SIZE = 2;
-
         size_t iPos = std::string::npos;
 
         for (const auto& [key, color] : COLOR_MAP)
