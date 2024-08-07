@@ -73,7 +73,7 @@ namespace Tag2D
         va_end(args);
 
         std::cerr << m_Options->warning_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR <<  "\n";
-    }
+ 	}
 
     void Logger::error(const char* fmt ...)
     {
@@ -90,7 +90,12 @@ namespace Tag2D
     {
         if (strlen(buffer) > LOGGER_MAX_BUFFER_LENGTH)
         {
-            std::cerr << "[CRITICAL INTERNAL ERROR: " << FUNCTION_NAME << "::" << LINE << "] Buffer length has exceeded the maximum value: " << LOGGER_MAX_BUFFER_LENGTH << "\n";
+            std::cerr << "[CRITICAL INTERNAL ERROR: "
+			   	   	  << FUNCTION_NAME 
+					  << "::" 
+					  << LINE 
+					  << "] Buffer length has exceeded the maximum value: " 
+					  << LOGGER_MAX_BUFFER_LENGTH << "\n";
             return std::string(" -[ERROR]- ");
         }
 
