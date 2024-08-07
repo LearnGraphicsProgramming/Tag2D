@@ -1,8 +1,6 @@
 project "Common"
 	location "../common"
 	kind "None"
-	language "C++"
-	cppdialect "C++20"
 
 	files
 	{
