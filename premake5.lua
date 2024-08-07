@@ -14,11 +14,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 group "Game"
 	include "client/BuildClient.lua"
 	include "server/BuildServer.lua"
-	include "common/BuildCommon.lua"
-group ""
-
+	
 group "Dependencies"
+	include "common/BuildCommon.lua"
 	include "client/external/glad/premake5.lua"
 	include "client/external/glfw/premake5.lua"
 	--include "client/external/ImGui/premake5.lua"
-group ""

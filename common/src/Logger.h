@@ -9,11 +9,8 @@
 #include <filesystem>
 #include <unordered_map>
 
+#define LOGGER_DEFAULT_COLOR "\033[0m"
 #define LOGGER_MAX_BUFFER_LENGTH UINT8_MAX
-
-#define log_info Logger::Instance().info
-#define log_warning Logger::Instance().warning
-#define log_error Logger::Instance().error
 
 #define FILE_NAME_HELPER(file) (strrchr(file, '\\') ? strrchr(file, '\\') + 1 : (strrchr(file, '/') ? strrchr(file, '/') + 1 : file))
 #define FILE_NAME (FILE_NAME_HELPER(std::source_location::current().file_name()))
@@ -22,7 +19,7 @@
 
 namespace Tag2D
 {
-	extern std::unordered_map<std::string, std::string> COLOR_MAP;
+	extern const std::pair<std::string, std::string> COLOR_MAP[];
 
 	struct LoggerOptions
 	{
@@ -40,7 +37,7 @@ namespace Tag2D
 
 		static Logger& Instance();
 
-		void Init(LoggerOptions& options);
+		void Init(std::shared_ptr<LoggerOptions> options);
 		void info(const char* fmt...);
 		void warning(const char* fmt...);
 		void error(const char* fmt...);
@@ -50,12 +47,7 @@ namespace Tag2D
 
 	private:
 		static Logger m_Instance;
-
-		std::string m_InfoPrefix;
-		std::string m_WarningPrefix;
-		std::string m_ErrorPrefix;
-		bool m_ShowTime;
+		std::shared_ptr<LoggerOptions> m_Options;
 	};
 }
-
 #endif // LOGGER_H

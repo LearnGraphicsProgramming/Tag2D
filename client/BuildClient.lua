@@ -13,7 +13,11 @@ project "Client"
 		"src/**.h",
 		"src/**.c",
 		"src/**.hpp",
-		"src/**.cpp"
+		"src/**.cpp",
+		"../common/src/**.c",
+		"../common/src/**.h",
+		"../common/src/**.cpp",
+		"../common/src/**.hpp",
 	}
 
 	includedirs
@@ -22,7 +26,6 @@ project "Client"
 		"external",
 		"external/glad/include",
 		"external/glfw/include",
-		"../common/src",
 		--"../common/external/glm"
 		--"external/ImGui"
 	}

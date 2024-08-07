@@ -10,7 +10,7 @@ namespace Tag2D
 #endif
 	{
 #ifdef DEBUG
-		log_info("Creating server object...");
+		Logger::Instance().info("Creating socket object...");
 #endif
 	}
 
@@ -27,14 +27,14 @@ namespace Tag2D
 	bool Socket::Init(const char* address, uint16_t port)
 	{
 		int result = SOCKET_ERROR;
-		log_info("Initializing socket..");
+		Logger::Instance().info("Initializing socket..");
 
 #ifdef WINDOWS
 		result = WSAStartup(MAKEWORD(2, 2), &m_WSAData);
 
 		if (result != 0)
 		{
-			log_error("Failed to start Windows WSA");
+			Logger::Instance().error("Failed to start Windows WSA");
 			return false;
 		}
 #endif
@@ -43,7 +43,7 @@ namespace Tag2D
 
 		if (m_ListenSocket == SOCKET_ERROR)
 		{
-			log_error("Failed to create socket (no socket descriptor returned)");
+			Logger::Instance().error("Failed to create socket (no socket descriptor returned)");
 			return false;
 		}
 
@@ -57,18 +57,17 @@ namespace Tag2D
 
 		if (bind(m_ListenSocket, (sockaddr*)&m_SocketAddrStruct, sizeof(m_SocketAddrStruct)) == SOCKET_ERROR)
 		{
-			log_error("Failed to bind socket");
+			Logger::Instance().error("Failed to bind socket");
 			return false;
 		}
 
 		if (listen(m_ListenSocket, SOMAXCONN) == SOCKET_ERROR)
 		{
-			log_error("Failed to listen");
+			Logger::Instance().error("Failed to listen");
 			return false;
 		}
 
-		log_info("Server listening at ");
-		std::cout << address << ":" << port << "\n";
+		Logger::Instance().info("!gServer listening at %s:%i", m_Address, m_Port);
 		
 		return true;
 	}
@@ -82,13 +81,13 @@ namespace Tag2D
 
 		if (clientSocket != INVALID_SOCKET)
 		{
-			log_info("New connection to the server!");
+			Logger::Instance().info("New connection to the server!");
 			closesocket(clientSocket);
 		}
 		else
 		{
 #ifdef WINDOWS
-			log_error(std::to_string(WSAGetLastError()));
+			Logger::Instance().error("error");
 #else
 			perror("accept");
 #endif

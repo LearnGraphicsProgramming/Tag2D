@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "Logger.h"
 #include <iostream>
 
 namespace Tag2D
@@ -6,7 +7,7 @@ namespace Tag2D
 	Server::Server()
 		: m_ShouldRun(false), m_Frame(0), m_Socket(Socket())
 	{
-		log_info("Created socket object");
+		Logger::Instance().info("Created socket object");
 	}
 
 	Server::~Server()
@@ -16,11 +17,11 @@ namespace Tag2D
 
 	void Server::Init(const char* address, uint16_t port)
 	{
-		log_info("Initializing server object...\n");
+		Logger::Instance().info("Initializing server object...\n");
 
 		if (!m_Socket.Init(address, port))
 		{
-			log_critical("Server can't be initialized because of socket error.");
+			Logger::Instance().error("Server can't be initialized because of socket error.");
 			return;
 		}
 
@@ -37,7 +38,7 @@ namespace Tag2D
 
 	void Server::Stop()
 	{
-		log_info("Stopping server...");
+		Logger::Instance().info("Stopping server...");
 		m_ShouldRun = true;
 	}
 
