@@ -1,11 +1,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Globals.h"
 
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello, Client!\n";
+	InitGlobals();
+
+	log_info("!rTest");
 
 	// CMDR-JohnAlex: TEMPORARY! Just to test if GLFW and GLAD are working.
 	if (!glfwInit())

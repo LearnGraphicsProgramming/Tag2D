@@ -23,6 +23,7 @@ project "Client"
 	includedirs
 	{
 		"src",
+		"../common/src",
 		"external",
 		"external/glad/include",
 		"external/glfw/include",
