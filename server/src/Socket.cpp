@@ -34,7 +34,7 @@ namespace Tag2D
 
 		if (result != 0)
 		{
-			log_critical("Failed to start Windows WSA");
+			log_error("Failed to start Windows WSA");
 			return false;
 		}
 #endif
@@ -43,7 +43,7 @@ namespace Tag2D
 
 		if (m_ListenSocket == SOCKET_ERROR)
 		{
-			log_critical("Failed to create socket (no socket descriptor returned)");
+			log_error("Failed to create socket (no socket descriptor returned)");
 			return false;
 		}
 
@@ -57,13 +57,13 @@ namespace Tag2D
 
 		if (bind(m_ListenSocket, (sockaddr*)&m_SocketAddrStruct, sizeof(m_SocketAddrStruct)) == SOCKET_ERROR)
 		{
-			log_critical("Failed to bind socket");
+			log_error("Failed to bind socket");
 			return false;
 		}
 
 		if (listen(m_ListenSocket, SOMAXCONN) == SOCKET_ERROR)
 		{
-			log_critical("Failed to listen");
+			log_error("Failed to listen");
 			return false;
 		}
 
@@ -88,7 +88,7 @@ namespace Tag2D
 		else
 		{
 #ifdef WINDOWS
-			log_critical(std::to_string(WSAGetLastError()));
+			log_error(std::to_string(WSAGetLastError()));
 #else
 			perror("accept");
 #endif
