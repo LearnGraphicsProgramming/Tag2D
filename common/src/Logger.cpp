@@ -86,7 +86,7 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cerr << m_Options->error_prefix << "\n";
+        std::cerr << m_Options->error_prefix << " !r" << AddColorToText(buffer) << "\n";
         std::cerr << "!r- File:!w " << FILE_NAME << "\n";
         std::cerr << "!r- Function:!w " << FUNCTION_NAME << "\n";
         std::cerr << "!r- Line:!w " << FILE_NAME << LOGGER_DEFAULT_COLOR << "\n";
