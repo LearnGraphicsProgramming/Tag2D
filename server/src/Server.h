@@ -1,11 +1,16 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+#include "pc.h"
+#include "Logger.h"
+
 #include <cstdint>
 #include <functional>
 #include <vector>
 
-#include "pc.h"
+#include "Socket.h"
+
+class Socket;
 
 namespace Tag2D
 {
@@ -26,11 +31,9 @@ namespace Tag2D
 
 	private:
 		bool m_ShouldRun;
-
-		char m_Address[MAX_IP_ADDRESS_LENGTH];
-		uint16_t m_Port;
-
 		uint64_t m_Frame;
+
+		Socket m_Socket;
 	};
 }
 
