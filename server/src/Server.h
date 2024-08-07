@@ -14,6 +14,7 @@ class Socket;
 namespace Tag2D
 {
 	// The main class of the server. It is responsible with managing players data. Also, here is the server loop.
+	using OnFrameCallbackFn = std::function<void()>;
 
 	class Server
 	{
@@ -25,6 +26,8 @@ namespace Tag2D
 		void Start();
 		void Stop();
 
+		void RegisterOnFrameCallback(OnFrameCallbackFn callback);
+
 	private:
 		void OnFrame();
 
@@ -33,6 +36,7 @@ namespace Tag2D
 		uint64_t m_Frame;
 
 		Socket m_Socket;
+		std::vector<OnFrameCallbackFn> m_OnFrameCallbacks;
 	};
 }
 

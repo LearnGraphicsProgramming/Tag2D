@@ -5,6 +5,12 @@
 #include <functional>
 #include <unordered_map>
 #include <string>
+#include <conio.h>
+
+#define ENTER_KEY_CODE 13
+#define BACKSPACE_KEY_CODE 8
+
+#define MAX_USER_INPUT_SIZE UINT8_MAX
 
 namespace Tag2D
 {
@@ -19,9 +25,15 @@ namespace Tag2D
 		~Console();
 
 		void RegisterCommand(const std::string& command, CommandCallback callback);
-		void OnFrame() const;
+		void OnFrame();
 
 	private:
+		void UserSentInput();
+
+	private:
+		char m_Input[MAX_USER_INPUT_SIZE];
+		uint8_t m_Offset;
+
 		std::unordered_map<std::string, CommandCallback> m_Commands;
 	};
 }

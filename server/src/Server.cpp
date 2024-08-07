@@ -42,10 +42,22 @@ namespace Tag2D
 		m_ShouldRun = true;
 	}
 
+	void Server::RegisterOnFrameCallback(OnFrameCallbackFn callback)
+	{
+		m_OnFrameCallbacks.push_back(callback);
+
+		log_info("New!w OnFrame Callback!d function has been added");
+	}
+
 	void Server::OnFrame()
 	{
 		m_Frame += 1;
-	
-		m_Socket.OnFrame();
+
+		//m_Socket.OnFrame();
+
+		for (const auto& function : m_OnFrameCallbacks)
+		{
+			function();
+		}
 	}
 }
