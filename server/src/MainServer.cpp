@@ -13,7 +13,7 @@ int main()
 
 	Tag2D::Logger::Instance().Init(options);
 
-	Tag2D::Logger::Instance().error("Logger error test. !wRan!ydom!g co!rlor");
+	log_error("Logger error test. !wRan!ydom!g co!rlor");
 
 	std::shared_ptr<Tag2D::Server> server = std::make_shared<Tag2D::Server>();
 	server->Init(SERVER_ADDRESS, SERVER_PORT);

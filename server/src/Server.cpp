@@ -7,7 +7,7 @@ namespace Tag2D
 	Server::Server()
 		: m_ShouldRun(false), m_Frame(0), m_Socket(Socket())
 	{
-		Logger::Instance().info("Created socket object");
+		log_info("Created socket object");
 	}
 
 	Server::~Server()
@@ -17,11 +17,11 @@ namespace Tag2D
 
 	void Server::Init(const char* address, uint16_t port)
 	{
-		Logger::Instance().info("Initializing server object...\n");
+		log_info("Initializing server object...\n");
 
 		if (!m_Socket.Init(address, port))
 		{
-			Logger::Instance().error("Server can't be initialized because of socket error.");
+			log_error("Server can't be initialized because of socket error.");
 			return;
 		}
 
@@ -38,7 +38,7 @@ namespace Tag2D
 
 	void Server::Stop()
 	{
-		Logger::Instance().info("Stopping server...");
+		log_info("Stopping server...");
 		m_ShouldRun = true;
 	}
 

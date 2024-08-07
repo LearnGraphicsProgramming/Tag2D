@@ -17,6 +17,10 @@
 #define FUNCTION_NAME (std::source_location::current().function_name())
 #define LINE (std::source_location::current().line())
 
+#define log_info(...) Tag2D::Logger::Instance().info(__VA_ARGS__);
+#define log_warning(...) Tag2D::Logger::Instance().warning(__VA_ARGS__);
+#define log_error(...) Tag2D::Logger::Instance().error(__VA_ARGS__);
+
 namespace Tag2D
 {
 	extern const std::pair<std::string, std::string> COLOR_MAP[];
