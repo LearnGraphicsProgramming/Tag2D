@@ -82,6 +82,13 @@ project "Client"
 
 		links
 		{
+			"glad",
+			"glfw",
+			--"ImGui",
+			"IOKit.framework",
+			"Cocoa.framework",
+			"OpenGL.framework",
+			"QuartzCore.framework"
 		}
 
 		defines

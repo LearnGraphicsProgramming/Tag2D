@@ -5,7 +5,17 @@
 #include <functional>
 #include <unordered_map>
 #include <string>
-#include <conio.h>
+#include <iostream>
+
+#if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
+	#include <conio.h>
+	#define PLATFORM Windows
+#elif defined(__linux__) || defined(__APPLE__)
+	#include <ncurses.h>
+	#define PLATFORM Unix
+#else
+	#define PLATFORM NA
+#endif
 
 #define ENTER_KEY_CODE 13
 #define BACKSPACE_KEY_CODE 8
