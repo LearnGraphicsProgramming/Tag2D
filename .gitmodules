@@ -1,4 +1,4 @@
 [submodule "client/external/glfw"]
 	path = client/external/glfw
 	url = https://github.com/CMDR-JohnAlex/glfw.git
-	branch = master
+	branch = MacOS_Attempt

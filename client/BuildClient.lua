@@ -82,6 +82,14 @@ project "Client"
 
 		links
 		{
+			"glad",
+			"glfw",
+			--"ImGui",
+			"CoreVideo",
+			"IOKit",
+			"Cocoa",
+			"Carbon",
+			"OpenGL",
 		}
 
 		defines
