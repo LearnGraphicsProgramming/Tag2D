@@ -5,8 +5,7 @@
 namespace Tag2D
 {
 	Server::Server()
-		: m_ShouldRun(false), m_Frame(0), m_Socket(Socket()),
-		m_LastFrameTimestamp(std::make_shared<Timestep>())
+		: m_ShouldRun(false), m_Socket(Socket())
 	{
 		log_info("Created socket object");
 	}
@@ -31,7 +30,6 @@ namespace Tag2D
 
 	void Server::Start()
 	{
-		m_LastFrameTimestamp->Update();
 		while (m_ShouldRun)
 		{
 			OnFrame();

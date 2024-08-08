@@ -28,20 +28,15 @@ namespace Tag2D
 		void Stop();
 
 		void RegisterOnFrameCallback(OnFrameCallbackFn callback);
-		inline const uint64_t& GetFrames() const { return m_Frame; }
-		inline std::shared_ptr<Timestep> GetLastFrameTimestamp() const { return m_LastFrameTimestamp; }
 
 	private:
 		void OnFrame();
 
 	private:
 		bool m_ShouldRun;
-		uint64_t m_Frame;
 
 		Socket m_Socket;
 		std::vector<OnFrameCallbackFn> m_OnFrameCallbacks;
-
-		std::shared_ptr<Timestep> m_LastFrameTimestamp;
 	};
 }
 
