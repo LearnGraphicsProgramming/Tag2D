@@ -16,6 +16,8 @@
 #define INVALID_SOCKET -1
 #endif
 
+// TODO: Add non-blocking option
+
 namespace Tag2D
 {
 	// Multi-platform Socket object
