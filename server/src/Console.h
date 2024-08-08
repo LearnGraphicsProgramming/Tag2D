@@ -12,9 +12,11 @@
 
 #define MAX_USER_INPUT_SIZE UINT8_MAX
 
+// FIXME: Use lambda for registering callbacks (better performance)
+
 namespace Tag2D
 {
-	// The console class it's responsible with registering console commands. It has a Bi-Directional relation with the Server class.
+	// The console class it's responsible with reading user input, registering console commands and processing them.
 
 	using CommandCallback = std::function<void()>;
 

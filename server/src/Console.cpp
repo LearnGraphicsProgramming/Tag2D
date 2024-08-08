@@ -1,11 +1,9 @@
 #include "Console.h"
 #include <iostream>
 #include <Logger.h>
-#include <Windows.h>
 
 namespace Tag2D
 {
-
 	Console::Console()
 		: m_Offset(0), m_Input{'\0'}
 	{
@@ -19,7 +17,8 @@ namespace Tag2D
 	{
 		m_Commands[command] = callback;
 
-		log_info("[%i] New command added:w %s", m_Commands.size(), command);
+		// FIXME: Why do i need to use std::string::c_str to display std::string in console?
+		log_info("[%i] New command added:!w %s", m_Commands.size(), command.c_str());
 	}
 
 	void Console::OnFrame()

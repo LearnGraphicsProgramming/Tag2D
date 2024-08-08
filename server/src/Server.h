@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Socket.h"
+#include <Timestep.h>
 
 class Socket;
 
@@ -27,6 +28,8 @@ namespace Tag2D
 		void Stop();
 
 		void RegisterOnFrameCallback(OnFrameCallbackFn callback);
+		inline const uint64_t& GetFrames() const { return m_Frame; }
+		inline std::shared_ptr<Timestep> GetLastFrameTimestamp() const { return m_LastFrameTimestamp; }
 
 	private:
 		void OnFrame();
@@ -37,6 +40,8 @@ namespace Tag2D
 
 		Socket m_Socket;
 		std::vector<OnFrameCallbackFn> m_OnFrameCallbacks;
+
+		std::shared_ptr<Timestep> m_LastFrameTimestamp;
 	};
 }
 
