@@ -1,9 +1,6 @@
 workspace "Tag2D"
 	architecture "x64"
 
-	filter "system:macosx" -- If the architecture is MacOSX, then we want to set the architecture to ARM64
-		architecture "ARM64"
-
 	configurations { "Debug", "Release", "Dist" } -- Debug, Release, Distribution. Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
 	startproject "Client"
 
@@ -12,6 +9,9 @@ workspace "Tag2D"
 		buildoptions { "/EHsc", "/Zc:preprocessor", "/Zc:__cplusplus" }
 
 	flags { "MultiProcessorCompile" }
+
+	filter "system:macosx" -- If the architecture is MacOSX, then we want to set the architecture to ARM64
+		architecture "ARM64"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
