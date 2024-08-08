@@ -1,5 +1,10 @@
 workspace "Tag2D"
-	architecture "x64"
+
+	filter "system:windows"
+		architecture "x64"
+	filter "system:macosx"
+		architecture "arm64"
+
 	configurations { "Debug", "Release", "Dist" } -- Debug, Release, Distribution. Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
 	startproject "Client"
 
@@ -14,7 +19,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 group "Game"
 	include "client/BuildClient.lua"
 	include "server/BuildServer.lua"
-	
+
 group "Dependencies"
 	include "common/BuildCommon.lua"
 	include "client/external/glad/premake5.lua"
