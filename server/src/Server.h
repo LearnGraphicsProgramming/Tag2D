@@ -23,7 +23,7 @@ namespace Tag2D
 		Server();
 		~Server();
 
-		void Init(const char* address, uint16_t port);
+		bool Init(const char* address, uint16_t port);
 		void Start();
 		void Stop();
 

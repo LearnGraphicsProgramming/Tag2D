@@ -15,17 +15,19 @@ namespace Tag2D
 		Stop();
 	}
 
-	void Server::Init(const char* address, uint16_t port)
+	bool Server::Init(const char* address, uint16_t port)
 	{
 		log_info("Initializing server object...\n");
 
 		if (!m_Socket.Init(address, port))
 		{
-			log_error("Server can't be initialized because of socket error.");
-			return;
+			log_error("Server can't be initialized.");
+			return false;
 		}
 
 		m_ShouldRun = true;
+		
+		return true;
 	}
 
 	void Server::Start()
