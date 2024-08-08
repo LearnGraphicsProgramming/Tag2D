@@ -3,7 +3,7 @@ workspace "Tag2D"
 	filter "system:windows"
 		architecture "x64"
 	filter "system:macosx"
-		architecture "arm64"
+		architecture "ARM64"
 
 	configurations { "Debug", "Release", "Dist" } -- Debug, Release, Distribution. Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
 	startproject "Client"
