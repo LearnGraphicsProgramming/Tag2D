@@ -85,11 +85,10 @@ project "Client"
 			"glad",
 			"glfw",
 			--"ImGui",
-			"CoreVideo",
-			"IOKit",
-			"Cocoa",
-			"Carbon",
-			"OpenGL",
+			"IOKit.framework",
+			"Cocoa.framework",
+			"OpenGL.framework",
+			"QuartzCore.framework"
 		}
 
 		defines
