@@ -6,29 +6,25 @@
 #include "FrameCounter.h"
 #include "Logger.h"
 
-void dummy_command()
-{
-	std::cout << "Dummy command called!\n";
-}
-
 int main()
 {
 	InitGlobals();
 
-	std::shared_ptr<Tag2D::Server> server = std::make_shared<Tag2D::Server>();
-	if (server->Init(SERVER_ADDRESS, SERVER_PORT))
+	Tag2D::Server server = Tag2D::Server();
+
+	if (server.Init(SERVER_ADDRESS, SERVER_PORT))
 	{
 		log_error("Socket failed.");
 		return -1;
 	}
 
-	std::shared_ptr<Tag2D::Console> console = std::make_shared<Tag2D::Console>();
-	std::shared_ptr<FrameCounter> frameCounter = std::make_shared<FrameCounter>();
+	Tag2D::Console console = Tag2D::Console();
+	Tag2D::FrameCounter frameCounter = Tag2D::FrameCounter();
 
-	server->RegisterOnFrameCallback([console]() { console->OnFrame(); });
-	server->RegisterOnFrameCallback([frameCounter]() { frameCounter->OnFrame(); });
+	server.RegisterOnFrameCallback([&console]() { console.OnFrame(); });
+	server.RegisterOnFrameCallback([&frameCounter]() { frameCounter.OnFrame(); });
+		 
+	server.Start();
 
-	server->Start();
-
-	server.reset();
+	server.Stop();
 }

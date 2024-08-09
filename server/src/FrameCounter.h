@@ -6,46 +6,50 @@
 #include <Server.h>
 #include <Logger.h>
 
+
+
 class Server;
 
-class FrameCounter
+namespace Tag2D
 {
-public:
-	FrameCounter() : m_ShouldCount(false), m_FrameCounter(0), m_LastSavedTimestep(Timestep()), m_CurrentTimestep(Timestep()) {}
-	~FrameCounter() {}
-
-	void OnFrame()
+	class FrameCounter
 	{
-		if (!m_ShouldCount)
-		{
-			m_ShouldCount = true;
-			m_LastSavedTimestep.Update();
-		}
+	public:
+		FrameCounter() : m_ShouldCount(false), m_FrameCounter(0), m_LastSavedTimestep(Timestep()), m_CurrentTimestep(Timestep()) {}
+		~FrameCounter() {}
 
-		if (m_ShouldCount)
+		void OnFrame()
 		{
-			m_FrameCounter++;
+			if (!m_ShouldCount)
+			{
+				m_ShouldCount = true;
+				m_LastSavedTimestep.Update();
+			}
 
-			m_CurrentTimestep.Update();
+			if (m_ShouldCount)
+			{
+				m_FrameCounter++;
+
+				m_CurrentTimestep.Update();
 
 			
-			if (m_CurrentTimestep.GetTime() - m_LastSavedTimestep.GetTime() == 1)
-			{
-				m_ShouldCount = false;
-				log_info("Server FPS: %i", m_FrameCounter);
-				m_FrameCounter = 0;
+				if (m_CurrentTimestep.GetTime() - m_LastSavedTimestep.GetTime() == 1)
+				{
+					m_ShouldCount = false;
+					log_info("Server FPS: %i", m_FrameCounter);
+					m_FrameCounter = 0;
+				}
 			}
+
 		}
 
-	}
+	private:
+		bool m_ShouldCount;
 
-private:
-	bool m_ShouldCount;
+		Timestep m_LastSavedTimestep;
+		Timestep m_CurrentTimestep;
 
-	Timestep m_LastSavedTimestep;
-	Timestep m_CurrentTimestep;
-
-	uint32_t m_FrameCounter;
-};
-
+		uint32_t m_FrameCounter;
+	};
+}
 #endif // FRAME_COUNTER_H
