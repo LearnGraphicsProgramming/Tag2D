@@ -9,7 +9,6 @@
 
 #include "pc.h"
 
-
 #ifdef WINDOWS
 	#include <conio.h>
 #elif defined(LINUX) || defined(APPLE)
