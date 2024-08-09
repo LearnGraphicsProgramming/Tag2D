@@ -12,7 +12,7 @@ int main()
 
 	Tag2D::Server server = Tag2D::Server();
 
-	if (server.Init(SERVER_ADDRESS, SERVER_PORT))
+	if (!server.Init(SERVER_ADDRESS, SERVER_PORT))
 	{
 		log_error("Socket failed.");
 		return -1;
