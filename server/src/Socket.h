@@ -16,6 +16,10 @@
 #define INVALID_SOCKET -1
 #endif
 
+#ifndef SOCKET_ERROR
+#define SOCKET_ERROR -1
+#endif
+
 // TODO: Add non-blocking option
 
 namespace Tag2D

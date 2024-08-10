@@ -19,8 +19,11 @@ namespace Tag2D
 	{
 		log_info("Initializing server object...\n");
 
+		
+		// Initializing socket.
 		if (!m_Socket.Init(address, port))
 		{
+			// Don't run the server if the socket has not been initialized
 			log_error("Server can't be initialized.");
 			return false;
 		}
@@ -53,6 +56,7 @@ namespace Tag2D
 
 	void Server::OnFrame()
 	{
+		// Calling OnFrame function of the socket object. Currently disabled because the socket it's in blocking mode (it will block the server until a new connection will be made).
 		//m_Socket.OnFrame();
 
 		for (const auto& function : m_OnFrameCallbacks)
