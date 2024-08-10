@@ -4,9 +4,7 @@
 #include <Timestep.h>
 #include <chrono>
 #include <Server.h>
-#include <Logger.h>
-
-
+#include <../../common/src/Logger.h>
 
 class Server;
 

@@ -1,7 +1,7 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 
-#include "pc.h"
+#include "../../common/src/pc.h"
 
 #include <cstdint>
 #include <string>

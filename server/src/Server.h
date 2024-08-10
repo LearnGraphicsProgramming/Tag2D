@@ -1,7 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "pc.h"
+#include "../../common/src/pc.h"
 
 #include <cstdint>
 #include <functional>
