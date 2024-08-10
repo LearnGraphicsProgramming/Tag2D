@@ -3,8 +3,7 @@
 
 namespace Tag2D
 {
-	Socket::Socket()
-		: m_Address{ 0 }, m_Port(-1), m_ListenSocket(INVALID_SOCKET), m_SocketAddrStruct(sockaddr_in())
+	Socket::Socket(): m_Address{ 0 }, m_Port(-1), m_ListenSocket(INVALID_SOCKET), m_SocketAddrStruct(sockaddr_in())
 #ifdef WINDOWS
 		, m_WSAData(WSADATA())
 #endif
