@@ -13,4 +13,6 @@ void InitSingletons()
 	options->error_prefix = "!r[ERROR]!d ";
 
 	Tag2D::Logger::Instance().Init(options);
+
+	options.reset();
 }
