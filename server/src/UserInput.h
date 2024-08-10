@@ -13,6 +13,7 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <iostream>
 #define STDIN 0
 #else
 #error Unsupported platform

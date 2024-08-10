@@ -49,21 +49,24 @@ namespace Tag2D
 			}
 		}
 #elif defined(MACOS) || defined (LINUX)
+		termios term;
 		char pressedChar = 0;
-		terminos terminal;
 
-		tcgetattr(STDIN, &terminal);
-		terminal.c_lflag &= ~ICANON;
-		terminal.c_lflag &= ~ECHO;
-
+		tcgetattr(STDIN, &term);
+		term.c_lflag &= ~ICANON; 
+		term.c_lflag &= ~ECHO;
 		tcsetattr(STDIN, TCSANOW, &term);
 		setbuf(stdin, NULL);
-		int stdinBytes = 0;
-		if(stdinBytes > 0) {
-			pressedChar = getchar();
-		}
 
-		std::cout << "You pressed: " << pressedChar << '\n';
+		int bytesWaiting;
+		do {
+			ioctl(STDIN, FIONREAD, &bytesWaiting); 
+			if (bytesWaiting > 0) {
+				pressedChar = getchar();
+			}
+		} while (bytesWaiting == 0);
+
+		std::cout << "You pressed: " << pressedChar;
 #endif
 	}
 }
