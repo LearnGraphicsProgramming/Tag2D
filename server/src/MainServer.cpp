@@ -4,7 +4,7 @@
 #include "Console.h"
 #include "Globals.h"
 #include "FrameCounter.h"
-#include "Logger.h"
+#include "../../common/src/Logger.h"
 
 int main()
 {

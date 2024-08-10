@@ -1,8 +1,8 @@
 #ifndef USER_INPUT_H
 #define USER_INPUT_H
 
-#include "pc.h"
-#include "Logger.h"
+#include "../../common/src/pc.h"
+#include "../../common/src/Logger.h"
 
 #ifdef WINDOWS
 #include <conio.h>

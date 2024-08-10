@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-#include "pc.h"
+#include "../../common/src/pc.h"
 #include "UserInput.h"
 
 namespace Tag2D

@@ -1,7 +1,7 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 
-#include "pc.h"
+#include "../../common/src/pc.h"
 
 #include <cstdint>
 #include <string>
@@ -36,8 +36,8 @@ namespace Tag2D
 
 #ifdef WINDOWS
 		WSADATA m_WSAData;
-#endif
 		sockaddr_in m_SocketAddrStruct;
+#endif
 
 		uint64_t m_ListenSocket;
 	};

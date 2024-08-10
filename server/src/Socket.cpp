@@ -1,5 +1,5 @@
 #include "Socket.h"
-#include "Logger.h"
+#include "../../common/src/Logger.h"
 
 namespace Tag2D
 {

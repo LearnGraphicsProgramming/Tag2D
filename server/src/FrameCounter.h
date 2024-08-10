@@ -1,10 +1,10 @@
 #ifndef FRAME_COUNTER_H
 #define FRAME_COUNTER_H
 
-#include <Timestep.h>
+#include "../../common/src/Timestep.h"
 #include <chrono>
 #include <Server.h>
-#include <Logger.h>
+#include <../../common/src/Logger.h>
 
 class Server;
 

@@ -1,14 +1,14 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "pc.h"
+#include "../../common/src/pc.h"
 
 #include <cstdint>
 #include <functional>
 #include <vector>
 
 #include "Socket.h"
-#include <Timestep.h>
+#include "../../common/src/Timestep.h"
 
 class Socket;
 
