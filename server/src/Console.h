@@ -8,21 +8,7 @@
 #include <iostream>
 
 #include "pc.h"
-
-#ifdef WINDOWS
-	#include <conio.h>
-#elif defined(LINUX) || defined(APPLE)
-	#include <ncurses.h>
-#else
-	#error Unsupported platform
-#endif
-
-#define ENTER_KEY_CODE 13
-#define BACKSPACE_KEY_CODE 8
-
-#define MAX_USER_INPUT_SIZE UINT8_MAX
-
-// FIXME: Use lambda for registering callbacks (better performance)
+#include "UserInput.h"
 
 namespace Tag2D
 {
@@ -40,11 +26,7 @@ namespace Tag2D
 		void OnFrame();
 
 	private:
-		void UserSentInput();
-
-	private:
-		char m_Input[MAX_USER_INPUT_SIZE];
-		uint8_t m_Offset;
+		UserInput m_UserInput;
 
 		std::unordered_map<std::string, CommandCallback> m_Commands;
 	};
