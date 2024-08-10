@@ -8,7 +8,12 @@
 #include <conio.h>
 #include <iostream>
 #elif defined(LINUX) || defined(APPLE)
-#include <ncurses.h>
+#include <stdio.h>
+#include <sys/select.h>
+#include <termios.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#define STDIN 0
 #else
 #error Unsupported platform
 #endif

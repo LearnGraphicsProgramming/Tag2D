@@ -3,8 +3,8 @@
 
 #include "../../common/src/Timestep.h"
 #include <chrono>
-#include <Server.h>
-#include <../../common/src/Logger.h>
+#include "Server.h"
+#include "../../common/src/Logger.h"
 
 class Server;
 

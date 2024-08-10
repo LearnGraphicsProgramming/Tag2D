@@ -3,7 +3,7 @@
 namespace Tag2D
 {
 	UserInput::UserInput() 
-		: m_Input{ 0 }, m_Offset(0) {}
+		: m_Input{0}, m_Offset(0) {}
 
 	UserInput::~UserInput() {}
 
@@ -13,7 +13,7 @@ namespace Tag2D
 		// _keyboardhit?
 		if (_kbhit())
 		{
-			// yes? ok, get characted (the ASCII code for characters are between 0-255 values (sizeof(short)). It will be returned as an int value (ASCII CODE), but it's ok to save it in a char type variable.
+			// yes? ok, get characted (the ASCII code for characters are between 0-255 values (sizeof(short)).
 			char key = getch();
 
 			// Did the user hit Enter button?
@@ -49,7 +49,21 @@ namespace Tag2D
 			}
 		}
 #elif defined(MACOS) || defined (LINUX)
-		// code for MacOS/Linux
+		char pressedChar = 0;
+		terminos terminal;
+
+		tcgetattr(STDIN, &terminal);
+		terminal.c_lflag &= ~ICANON;
+		terminal.c_lflag &= ~ECHO;
+
+		tcsetattr(STDIN, TCSANOW, &term);
+		setbuf(stdin, NULL);
+		int stdinBytes = 0;
+		if(stdinBytes > 0) {
+			pressedChar = getchar();
+		}
+
+		std::cout << "You pressed: " << pressedChar << '\n';
 #endif
 	}
 }
