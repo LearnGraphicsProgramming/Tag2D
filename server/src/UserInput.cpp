@@ -10,7 +10,7 @@ namespace Tag2D
 
 	void UserInput::CheckInput()
 	{
-#ifdef WINDOWS
+#if defined(WINDOWS) || defined(LINUX)
 		if (_kbhit())
 		{
 			char key = getch();
@@ -37,7 +37,8 @@ namespace Tag2D
 				m_Input[m_Offset + 1] = '\0';
 			}
 		}
-#elif defined(MACOS) || defined (LINUX)
+#elif defined(MACOS)
+//#elif defined(MACOS) || defined (LINUX)
 		termios term;
 		char pressedChar = 0;
 

@@ -4,7 +4,7 @@
 #include "../../common/src/pc.h"
 #include "../../common/src/Logger.h"
 
-#ifdef WINDOWS
+#if defined(WINDOWS) || defined(LINUX)
 #include <conio.h>
 #include <iostream>
 #elif defined(LINUX) || defined(APPLE)
