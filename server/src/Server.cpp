@@ -7,7 +7,7 @@ namespace Tag2D
 	Server::Server()
 		: m_ShouldRun(false), m_Socket(Socket())
 	{
-		log_info("Created socket object");
+		log_info("!yStarting server...");
 	}
 
 	Server::~Server()
@@ -16,15 +16,12 @@ namespace Tag2D
 	}
 
 	bool Server::Init(const char* address, uint16_t port)
-	{
-		log_info("Initializing server object...\n");
-
-		
+	{	
 		// Initializing socket.
 		if (!m_Socket.Init(address, port))
 		{
 			// Don't run the server if the socket has not been initialized
-			log_error("Server can't be initialized.");
+			log_error("Server could not be initialized.");
 			return false;
 		}
 

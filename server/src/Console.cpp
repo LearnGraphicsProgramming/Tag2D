@@ -4,10 +4,7 @@
 
 namespace Tag2D
 {
-	Console::Console() : m_UserInput(UserInput())
-	{
-		
-	}
+	Console::Console() : m_UserInput(UserInput()) {}
 
 	Console::~Console() {}
 
@@ -21,6 +18,23 @@ namespace Tag2D
 
 	void Console::OnFrame()
 	{
+		std::string input;
+
 		m_UserInput.CheckInput();
+
+		if (m_UserInput.GetInput(input))
+		{
+			const auto& pair = m_Commands.find(input);
+			
+			if (pair == m_Commands.end())
+			{
+				log_info("Invalid command: %s", input.c_str());
+			}
+			else
+			{
+				log_info("Command: %s", input.c_str());
+				pair->second();
+			}
+		}
 	}
 }

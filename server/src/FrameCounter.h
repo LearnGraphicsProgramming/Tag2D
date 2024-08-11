@@ -16,9 +16,10 @@ namespace Tag2D
 		FrameCounter() : m_ShouldCount(false), m_FrameCounter(0), m_LastSavedTimestep(Timestep()), m_CurrentTimestep(Timestep()), m_ShowFrames(false) {}
 		~FrameCounter() {}
 
-		void SetConstantShowFrames(const bool show_frames)
+		void ToggleConstantFrameDisplay()
 		{
-			m_ShowFrames = show_frames;
+			m_ShowFrames = !m_ShowFrames;
+			log_info("%s FPS output.", m_ShowFrames ? "Enabled" : "Disabled");
 		}
 
 		void OnFrame()
