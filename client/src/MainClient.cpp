@@ -1,6 +1,5 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "Globals.h"
+#include "Window.h"
 
 #include <iostream>
 
@@ -10,43 +9,16 @@ int main()
 
 	log_info("!rTest");
 
-	// CMDR-JohnAlex: TEMPORARY! Just to test if GLFW and GLAD are working.
-	if (!glfwInit())
-	{
-		std::cerr << "Failed to initialize GLFW" << std::endl;
-		return -1;
-	}
+	Window window({"Tag2D Client", "", 1280, 720 });
+	window.SetVSync(true);
 
-	// Set OpenGL version to 4.6
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-
-	GLFWwindow* window = glfwCreateWindow(1600, 900, "Tag2D", nullptr, nullptr);
-	if (!window)
-	{
-		std::cerr << "Failed to create window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-
-	glfwMakeContextCurrent(window);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cerr << "Failed to initialize GLAD" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-
-	while (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(window.GetGLFWWindow()))
 	{
 		glClearColor(1.0f, 0.0f, 0.54901960784f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+		window.OnUpdate();
 	}
 
-	glfwTerminate();
 	return 0;
 }
