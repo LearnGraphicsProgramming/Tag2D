@@ -23,10 +23,6 @@
 #define BACKSPACE_KEY_CODE 8
 #define MAX_USER_INPUT_SIZE UINT8_MAX
 
-#ifdef WINDOWS
-#include <Windows.h>
-#endif
-
 // FIXME: On Windows, the characters typed by the user are not showed in real time.
 
 namespace Tag2D
