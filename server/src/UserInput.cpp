@@ -10,7 +10,6 @@ namespace Tag2D
 
 	void UserInput::CheckInput()
 	{
-#if defined(WINDOWS) || defined(LINUX)
 		if (_kbhit())
 		{
 			char key = getch();
@@ -37,28 +36,8 @@ namespace Tag2D
 				m_Input[m_Offset + 1] = '\0';
 			}
 		}
-#elif defined(MACOS)
-//#elif defined(MACOS) || defined (LINUX)
-		termios term;
-		char pressedChar = 0;
-
-		tcgetattr(STDIN, &term);
-		term.c_lflag &= ~ICANON; 
-		term.c_lflag &= ~ECHO;
-		tcsetattr(STDIN, TCSANOW, &term);
-		setbuf(stdin, NULL);
-
-		int bytesWaiting;
-		do {
-			ioctl(STDIN, FIONREAD, &bytesWaiting); 
-			if (bytesWaiting > 0) {
-				pressedChar = getchar();
-			}
-		} while (bytesWaiting == 0);
-
-		std::cout << "You pressed: " << pressedChar;
-#endif
 	}
+
 	bool UserInput::GetInput(std::string& buffer)
 	{
 		if (m_PressedEnter)
