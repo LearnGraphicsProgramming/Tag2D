@@ -4,16 +4,23 @@ namespace Tag2D
 {
 	UserInput::UserInput() 
 		: m_Input{0}, m_Offset(0), m_PressedEnter(false)
-	{}
+	{
+#if defined(MACOS) || defined(LINUX)
+		tcgetattr(STDIN, &m_Termios);
+		m_Termios.c_lflag &= ~ICANON;
+		m_Termios.c_lflag &= ~ECHO;
+		tcsetattr(STDIN, TCSANOW, &m_Termios);
+		setbuf(stdin, NULL);
+#endif
+	}
 
 	UserInput::~UserInput() {}
 
 	void UserInput::CheckInput()
 	{
-#if defined(WINDOWS) || defined(LINUX)
-		if (_kbhit())
+		if (KeyboardHit())
 		{
-			char key = getch();
+			char key = GetKeyboardChar();
 
 			if (key == ENTER_KEY_CODE)
 			{
@@ -37,27 +44,6 @@ namespace Tag2D
 				m_Input[m_Offset + 1] = '\0';
 			}
 		}
-#elif defined(MACOS)
-//#elif defined(MACOS) || defined (LINUX)
-		termios term;
-		char pressedChar = 0;
-
-		tcgetattr(STDIN, &term);
-		term.c_lflag &= ~ICANON; 
-		term.c_lflag &= ~ECHO;
-		tcsetattr(STDIN, TCSANOW, &term);
-		setbuf(stdin, NULL);
-
-		int bytesWaiting;
-		do {
-			ioctl(STDIN, FIONREAD, &bytesWaiting); 
-			if (bytesWaiting > 0) {
-				pressedChar = getchar();
-			}
-		} while (bytesWaiting == 0);
-
-		std::cout << "You pressed: " << pressedChar;
-#endif
 	}
 	bool UserInput::GetInput(std::string& buffer)
 	{
@@ -72,5 +58,17 @@ namespace Tag2D
 		}
 
 		return false;
+	}
+
+	const bool UserInput::KeyboardHit() const
+	{
+#if defined(MACOS) || defined(LINUX)
+		static int writeBytes = 0;
+		ioctl(STDIN, FIONREAD, &writeBytes)
+
+		return writeBytes > 0;
+#else
+		return _kbhit() != 0;
+#endif
 	}
 }

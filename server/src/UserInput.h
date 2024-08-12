@@ -4,10 +4,11 @@
 #include "../../common/src/pc.h"
 #include "../../common/src/Logger.h"
 
-#if defined(WINDOWS) || defined(LINUX)
-#include <conio.h>
+
 #include <iostream>
-#elif defined(LINUX) || defined(APPLE)
+#include <conio.h>
+
+#if defined(LINUX) || defined(APPLE)
 #include <stdio.h>
 #include <sys/select.h>
 #include <termios.h>
@@ -15,9 +16,15 @@
 #include <unistd.h>
 #include <iostream>
 #define STDIN 0
-#else
-#error Unsupported platform
+
+#define GetKeyboardChar getchar
+
 #endif
+
+#if defined(WINDOWS)
+#define GetKeyboardChar getch
+#endif
+
 
 #define ENTER_KEY_CODE 13
 #define BACKSPACE_KEY_CODE 8
@@ -37,10 +44,17 @@ namespace Tag2D
 		bool GetInput(std::string& buffer);
 
 	private:
+		const bool KeyboardHit() const;
+
+	private:
 		char m_Input[MAX_USER_INPUT_SIZE];
 		uint8_t m_Offset;
 
 		bool m_PressedEnter;
+
+#if defined(MACOS) || defined(LINUX)
+		termios m_Termios;
+#endif
 	};
 }
 
