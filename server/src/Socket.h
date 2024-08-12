@@ -10,6 +10,13 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #pragma comment(lib, "Ws2_32.lib")
+
+#elif defined(LINUX) | defined(APPLE)
+#include <cstring>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <netinet/in.h>
 #endif
 
 #ifndef INVALID_SOCKET
@@ -40,9 +47,9 @@ namespace Tag2D
 
 #ifdef WINDOWS
 		WSADATA m_WSAData;
-		sockaddr_in m_SocketAddrStruct;
 #endif
 
+		sockaddr_in m_SocketAddrStruct;
 		uint64_t m_ListenSocket;
 	};
 }
