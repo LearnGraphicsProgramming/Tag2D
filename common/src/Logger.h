@@ -5,6 +5,7 @@
 #include <source_location>
 #include <cstdarg>
 #include <filesystem>
+#include <cstring>
 
 #define LOGGER_DEFAULT_COLOR "\033[0m"
 #define LOGGER_MAX_BUFFER_LENGTH UINT8_MAX
