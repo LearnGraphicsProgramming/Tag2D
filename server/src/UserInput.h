@@ -6,7 +6,6 @@
 
 
 #include <iostream>
-#include <conio.h>
 
 #if defined(LINUX) || defined(APPLE)
 #include <stdio.h>
@@ -22,6 +21,7 @@
 #endif
 
 #if defined(WINDOWS)
+#include <conio.h>
 #define GetKeyboardChar getch
 #endif
 
