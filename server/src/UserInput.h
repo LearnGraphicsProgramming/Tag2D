@@ -14,19 +14,19 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <iostream>
+
 #define STDIN 0
-
 #define GetKeyboardChar getchar
-
+#define ENTER_KEY_CODE 10
 #endif
 
 #if defined(WINDOWS)
 #include <conio.h>
+
 #define GetKeyboardChar getch
+#define ENTER_KEY_CODE 13
 #endif
 
-
-#define ENTER_KEY_CODE 13
 #define BACKSPACE_KEY_CODE 8
 #define MAX_USER_INPUT_SIZE UINT8_MAX
 
