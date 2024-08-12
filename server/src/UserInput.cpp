@@ -64,7 +64,7 @@ namespace Tag2D
 	{
 #if defined(MACOS) || defined(LINUX)
 		static int writeBytes = 0;
-		ioctl(STDIN, FIONREAD, &writeBytes)
+		ioctl(STDIN, FIONREAD, &writeBytes);
 
 		return writeBytes > 0;
 #else
