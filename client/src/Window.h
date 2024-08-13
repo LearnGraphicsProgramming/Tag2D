@@ -46,6 +46,8 @@ public:
 	virtual std::pair<float, float> GetWindowPosition() const;
 
 	virtual GLFWwindow* GetGLFWWindow() const { return m_Window; }
+	virtual const bool ShouldClose() const { return glfwWindowShouldClose(m_Window) != 0; }
+
 
 private:
 	virtual void LoadIcon(const std::string& iconPath);
