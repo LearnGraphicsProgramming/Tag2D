@@ -27,14 +27,18 @@ Window::Window(const WindowProperties& properties)
 		s_GLFWInitialized = true;
 	}
 
+
 	log_info("Loading OpenGL 3.3 core");
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#ifdef APPLE
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
 
 	// TODO: CMDR-JohnAlex: Add the ability to load as different window modes. (Windowed, Fullscreen, Borderless)
-	m_Window = glfwCreateWindow(static_cast<int>(m_Data.Width), static_cast<int>(m_Data.Height), m_Data.Title.c_str(), nullptr, nullptr);
+	m_Window = glfwCreateWindow(m_Data.Width, m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 	glfwMakeContextCurrent(m_Window);
 	LoadIcon(m_Data.IconPath);
@@ -42,6 +46,8 @@ Window::Window(const WindowProperties& properties)
 	if (!status)
 		log_error("Failed to initialize glad!");
 	glfwSetWindowUserPointer(m_Window, &m_Data);
+
+	glfwSetFramebufferSizeCallback(m_Window, FramebufferSizeCallback);
 }
 
 Window::~Window()
@@ -82,6 +88,12 @@ std::pair<float, float> Window::GetWindowPosition() const
 	int width, height;
 	glfwGetWindowPos(m_Window, &width, &height);
 	return { width, height };
+}
+
+void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+	log_info("Window resized: w: %i, h: %i", width, height);
+	glViewport(0, 0, width, height);
 }
 
 void Window::LoadIcon(const std::string& iconPath)

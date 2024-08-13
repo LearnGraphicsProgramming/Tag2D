@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "pc.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <string>
@@ -9,13 +11,13 @@ struct WindowProperties
 {
 	std::string Title;
 	std::string IconPath;
-	uint32_t Width;
-	uint32_t Height;
+	int Width;
+	int Height;
 
 	WindowProperties(const std::string& title = "",
 		std::string iconPath = "",
-		uint32_t width = 1280,
-		uint32_t height = 720)
+		int width = 1280,
+		int height = 720)
 		: Title(title), IconPath(iconPath), Width(width), Height(height)
 	{
 	}
@@ -47,6 +49,8 @@ public:
 
 	virtual GLFWwindow* GetGLFWWindow() const { return m_Window; }
 	virtual const bool ShouldClose() const { return glfwWindowShouldClose(m_Window) != 0; }
+
+	static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 
 
 private:
