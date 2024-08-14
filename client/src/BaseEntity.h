@@ -1,40 +1,40 @@
 #ifndef BASE_ENTITY_H
 #define BASE_ENTITY_H
 
-#include "Window.h"
+#include "ApplicationEvents.h"
 
 #include <memory>
 #include <unordered_map>
+#include <string>
 
 namespace Tag2D
 {
+	class Application;
+
 	class BaseEntity
 	{
 	public:
-		virtual inline ~BaseEntity()
-		{
-			m_ParentWindow->UnregisterWindowCallback(m_CallbackIDs);
-		}
+		virtual ~BaseEntity();
+
+		void SetEntityClassName(const std::string& name);
+		void ToString() const;
 
 	protected:
-		inline BaseEntity(std::shared_ptr<Window> window) : m_ParentWindow(window)
-		{
-			m_ParentWindow->RegisterWindowCallback(WindowEventType::Start, [this]() { OnStart(); });
-			m_ParentWindow->RegisterWindowCallback(WindowEventType::Update, [this]() { OnUpdate(); });
-			m_ParentWindow->RegisterWindowCallback(WindowEventType::Close, [this]() { OnClose(); });
-		}
+		BaseEntity();
 		
 		virtual void OnStart() = 0;
 		virtual void OnUpdate() = 0;
 		virtual void OnClose() = 0;
 
-	private:
-		const std::shared_ptr<Window> m_ParentWindow = nullptr;
-		int m_OnStartCallbackID = 0;
-		int m_OnUpdateCallbackID = 0;
-		int m_OnCloseCallbackID = 0;
+	protected:
+		std::string m_EntityName;
 
-		std::unordered_map<WindowEventType, int> m_CallbackIDs;
+	private:
+		uint8_t m_OnStartCallbackID;
+		uint8_t m_OnUpdateCallbackID;
+		uint8_t m_OnCloseCallbackID;
+
+		std::unordered_map<ApplicationEventType, int> m_CallbackIDs;
 	};
 }
 

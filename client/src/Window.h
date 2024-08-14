@@ -2,16 +2,11 @@
 #define WINDOW_H
 
 #include "pc.h"
+#include "Shaders.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <string>
-#include <functional>
-#include <unordered_map>
-
-#include "Shaders.h"
-
-#define GetEventName(type) (WINDOW_EVENT_DICTIONARY[static_cast<int>(type)].c_str())
 
 namespace Tag2D
 {
@@ -33,24 +28,9 @@ namespace Tag2D
 		virtual ~WindowProperties() = default;
 	};
 
-	enum class WindowEventType
-	{
-		Start = 0,
-		Update,
-		Close
-	};
-
-	const std::string WINDOW_EVENT_DICTIONARY[] =
-	{
-		{ "Window::OnStart" },
-		{ "Window::OnUpdate" },
-		{ "Window::OnClose" }
-
-	};
 
 	class Window
 	{
-		using EventCallbackFn = std::function<void()>;
 	public:
 		Window(const WindowProperties& properties = WindowProperties());
 		virtual ~Window();
@@ -76,12 +56,7 @@ namespace Tag2D
 
 		virtual void LoadIcon(const std::string& iconPath);
 
-		virtual void Start();
 		static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
-
-		void RegisterWindowCallback(const WindowEventType& type, EventCallbackFn function);
-		void UnregisterWindowCallback(std::unordered_map<WindowEventType, int>& class_callback_ids);
-		void TriggerEventCallback(const WindowEventType& type) const;
 
 	private:
 		GLFWwindow* m_Window;
@@ -97,11 +72,6 @@ namespace Tag2D
 
 		float m_LastFrameTime = 0.0f;
 		Shaders m_Shaders;
-
-		std::unordered_map<
-			WindowEventType,
-			std::vector<EventCallbackFn>
-		> m_EventsCallbacks;
 	};
 }
 

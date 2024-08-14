@@ -2,16 +2,16 @@
 #define ENTITY_H
 
 #include "BaseEntity.h"
-#include "Window.h"
 #include <vector>
 #include <memory>
 
 namespace Tag2D
 {
-	class Entity : BaseEntity
+	class BaseEntity;
+	class Entity : public BaseEntity
 	{
 	public:
-		Entity(std::shared_ptr<Window> window);
+		Entity();
 		~Entity();
 
 		void OnStart() override;

@@ -7,8 +7,11 @@ int main()
 {
 	InitGlobals();
 
-	Tag2D::Application gameApp = Tag2D::Application();
-	gameApp.Init();
+	Tag2D::Application::Instance().Init();
+
+	log_info("!gGame application initialized succesfully")
+
+	Tag2D::Application::Instance().Run();
 
 	return 0;
 }

@@ -54,7 +54,6 @@ namespace Tag2D
 		}
 
 		try {
-
 			m_Shaders.InitShaders();
 		}
 		catch (std::exception& e) {
@@ -75,6 +74,7 @@ namespace Tag2D
 
 	void Window::OnUpdate()
 	{
+
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 
@@ -108,69 +108,9 @@ namespace Tag2D
 		return { width, height };
 	}
 
-	void Window::Start()
-	{
-		log_info("!wStarting game loop..");
-
-		TriggerEventCallback(WindowEventType::Start);
-
-		while (!ShouldClose())
-		{
-			glClearColor(1.0f, 0.0f, 0.54901960784f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			TriggerEventCallback(WindowEventType::Update);
-
-			glfwPollEvents();
-			glfwSwapBuffers(m_Window);
-		}
-
-		TriggerEventCallback(WindowEventType::Close);
-
-		// TODO: Must free m_ShaderProgram from Shaders
-		glfwTerminate();
-	}
-
 	void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
-	}
-
-	void Window::RegisterWindowCallback(const WindowEventType& type, EventCallbackFn function)
-	{
-		m_EventsCallbacks[type].push_back(function);
-	}
-
-	void Window::UnregisterWindowCallback(std::unordered_map<WindowEventType, int>& class_callback_ids)
-	{
-		for (const auto& [eventType, registeredCallbackID] : class_callback_ids)
-		{
-			auto it = m_EventsCallbacks.find(eventType);
-
-			if (it != m_EventsCallbacks.end())
-			{
-				std::vector<EventCallbackFn>& callbacksVector = it->second;
-				if (registeredCallbackID < callbacksVector.size())
-				{
-					callbacksVector.erase(callbacksVector.begin() + registeredCallbackID);
-				}
-			}
-		}
-	}
-
-	void Window::TriggerEventCallback(const WindowEventType& type) const
-	{
-		auto it = m_EventsCallbacks.find(type);
-
-		if (it != m_EventsCallbacks.end())
-		{
-			const std::vector<EventCallbackFn>& callbacksVector = it->second;
-
-			for (const auto& callbackFunction : callbacksVector)
-			{
-				callbackFunction();
-			}
-		}
 	}
 
 	void Window::LoadIcon(const std::string& iconPath)
