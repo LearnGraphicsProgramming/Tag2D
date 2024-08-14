@@ -103,7 +103,7 @@ project "Client"
 		links
 		{
 			"glad",
-			"glfw",
+			"glfw3",
 			--"ImGui",
 			"GL",
 			"X11",
