@@ -11,13 +11,13 @@ namespace Tag2D
 	class BaseEntity
 	{
 	public:
-		virtual ~BaseEntity()
+		virtual inline ~BaseEntity()
 		{
 			m_ParentWindow->UnregisterWindowCallback(m_CallbackIDs);
 		}
 
 	protected:
-		BaseEntity(std::shared_ptr<Window> window) : m_ParentWindow(window)
+		inline BaseEntity(std::shared_ptr<Window> window) : m_ParentWindow(window)
 		{
 			m_ParentWindow->RegisterWindowCallback(WindowEventType::Start, [this]() { OnStart(); });
 			m_ParentWindow->RegisterWindowCallback(WindowEventType::Update, [this]() { OnUpdate(); });
