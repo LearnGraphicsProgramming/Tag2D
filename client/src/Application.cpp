@@ -86,6 +86,7 @@ namespace Tag2D
 				if (registeredCallbackID < callbacksVector.size())
 				{
 					callbacksVector.erase(callbacksVector.begin() + registeredCallbackID);
+					break;
 				}
 			}
 		}
