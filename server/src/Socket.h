@@ -37,13 +37,12 @@ namespace Tag2D
 	private:
 		char m_Address[MAX_IP_ADDRESS_LENGTH];
 		uint16_t m_Port;
+		uint64_t m_ListenSocket;
 
 #ifdef WINDOWS
 		WSADATA m_WSAData;
 		sockaddr_in m_SocketAddrStruct;
 #endif
-
-		uint64_t m_ListenSocket;
 	};
 }
 #endif // SOCKET_H

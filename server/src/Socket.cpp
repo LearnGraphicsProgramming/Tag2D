@@ -6,7 +6,7 @@ namespace Tag2D
 	Socket::Socket()
 		: m_Address{ 0 }, m_Port(-1), m_ListenSocket(INVALID_SOCKET), m_SocketAddrStruct(sockaddr_in())
 #ifdef WINDOWS
-		, m_WSAData(WSADATA())
+		,m_WSAData(WSADATA())
 #endif
 	{}
 
@@ -57,7 +57,7 @@ namespace Tag2D
 		// Trying to bind the informations we want to the socket
 		if (bind(m_ListenSocket, (sockaddr*)&m_SocketAddrStruct, sizeof(m_SocketAddrStruct)) == SOCKET_ERROR)
 		{
-			//a SOCKET_ERROR (which is -1) will be returned with an error code: https://www.ibm.com/docs/en/zos/2.4.0?topic=errnos-sockets-return-codes
+			//a SOCKET_ERROR (which is -1) will be returned with an error code
 			log_error("Failed to bind socket");
 			return false;
 		}
