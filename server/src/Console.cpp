@@ -1,6 +1,6 @@
 #include "Console.h"
 #include <iostream>
-#include <Logger.h>
+#include "../../common/src/Logger.h"
 
 namespace Tag2D
 {
