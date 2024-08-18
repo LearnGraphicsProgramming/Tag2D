@@ -1,5 +1,8 @@
 #include "Window.h"
-#include "Globals.h"
+#include "Logger.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 namespace Tag2D
 {
@@ -11,7 +14,7 @@ namespace Tag2D
 	}
 
 	Window::Window(const WindowProperties& properties)
-		: m_Shaders(Shaders())
+		: m_Shaders(Shaders()), m_Data{}
 	{
 		m_Data.Title = properties.Title;
 		m_Data.IconPath = properties.IconPath;
@@ -117,11 +120,18 @@ namespace Tag2D
 
 	void Window::LoadIcon(const std::string& iconPath)
 	{
-		log_warning("lexzor: Check if image exists");
+		constexpr uint8_t CHANNELS = 4; // 3 - RGB (jpeg), 4 - RGBA (png)
 
-		constexpr uint8_t RGBA_CHANNELS = 4;
+		log_info("Icon path: %s", iconPath.c_str());
 
-		m_Data.Icon[0].pixels = stbi_load(iconPath.c_str(), &m_Data.Icon[0].width, &m_Data.Icon[0].height, 0, RGBA_CHANNELS);
+		m_Data.Icon[0].pixels = stbi_load(iconPath.c_str(), &m_Data.Icon[0].width, &m_Data.Icon[0].height, 0, CHANNELS);
+
+		if (stbi_failure_reason())
+		{
+			log_error("Icon load failed: %s", stbi_failure_reason());
+			return;
+		}
+
 		glfwSetWindowIcon(m_Window, 1, &m_Data.Icon[0]);
 
 		stbi_image_free(m_Data.Icon[0].pixels);

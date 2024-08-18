@@ -23,7 +23,7 @@ namespace Tag2D
 	void Application::Init()
 	{
 		{
-			Tag2D::WindowProperties properties = { "Tag2D Client", "", 1280, 720 };
+			Tag2D::WindowProperties properties = { "Tag2D Client", "assets/icon/tag2d_icon.png", 1280, 720 };
 			m_Window = std::make_shared<Tag2D::Window>(properties);
 		}
 
