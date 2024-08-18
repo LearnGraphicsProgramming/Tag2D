@@ -23,6 +23,7 @@ project "Client"
 		"external",
 		"external/glad/include",
 		"external/glfw/include",
+		"external/stb_image/include"
 		--"../common/external/glm"
 		--"external/ImGui"
 	}

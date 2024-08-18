@@ -117,7 +117,13 @@ namespace Tag2D
 
 	void Window::LoadIcon(const std::string& iconPath)
 	{
-		// TODO: CMDR-JohnAlex: Add stb_image.h to load icons.
-		log_warning("Window::LoadIcon() needs to be implemented!");
+		log_warning("lexzor: Check if image exists");
+
+		constexpr uint8_t RGBA_CHANNELS = 4;
+
+		m_Data.Icon[0].pixels = stbi_load(iconPath.c_str(), &m_Data.Icon[0].width, &m_Data.Icon[0].height, 0, RGBA_CHANNELS);
+		glfwSetWindowIcon(m_Window, 1, &m_Data.Icon[0]);
+
+		stbi_image_free(m_Data.Icon[0].pixels);
 	}
 }
