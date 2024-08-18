@@ -122,8 +122,6 @@ namespace Tag2D
 	{
 		constexpr uint8_t CHANNELS = 4; // 3 - RGB (jpeg), 4 - RGBA (png)
 
-		log_info("Icon path: %s", iconPath.c_str());
-
 		m_Data.Icon[0].pixels = stbi_load(iconPath.c_str(), &m_Data.Icon[0].width, &m_Data.Icon[0].height, 0, CHANNELS);
 
 		if (stbi_failure_reason())
