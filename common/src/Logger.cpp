@@ -111,8 +111,6 @@ namespace Tag2D
         std::string stringBuffer(buffer);
         size_t iPos = std::string::npos;
 
-        int i = 0;
-
         for (const auto& [key, color] : COLOR_MAP)
         {
             while ((iPos = stringBuffer.find(key)) != std::string::npos)

@@ -32,7 +32,7 @@ namespace Tag2D
 
 		glEnableVertexAttribArray(0);
 
-		log_info("Entity !w'%s'!d initialized. Vertices[0]: %f", m_EntityName.c_str(), m_Vertices[0]);
+		log_info("Entity !bc%s!d initialized", m_EntityName.c_str());
 	}
 
 	void Entity::OnUpdate()

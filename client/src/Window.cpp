@@ -65,6 +65,8 @@ namespace Tag2D
 		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		glfwSetFramebufferSizeCallback(m_Window, FramebufferSizeCallback);
+
+		log_info("Window initialized succesfully");
 	}
 
 	Window::~Window()
