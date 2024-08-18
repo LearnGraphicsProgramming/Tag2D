@@ -53,7 +53,7 @@ namespace Tag2D
         m_Options = std::move(options);
     }
 
-    void Logger::info(const char* fmt ...)
+    void Logger::info(const std::source_location& source_location, const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
 
@@ -65,7 +65,7 @@ namespace Tag2D
         std::cout << m_Options->info_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
     }
 
-    void Logger::warning(const char* fmt ...)
+    void Logger::warning(const std::source_location& source_location, const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
 
@@ -74,10 +74,10 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cout << m_Options->warning_prefix << "!y (" << FILE_NAME << "::" << LINE << "):!w " << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cout << m_Options->warning_prefix << AddColorToText("!y(") << FILE_NAME(source_location) << "::" << LINE(source_location) << AddColorToText(")!w ") << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
     }
 
-    void Logger::error(const char* fmt ...)
+    void Logger::error(const std::source_location& source_location, const char* fmt ...)
     {
         char buffer[LOGGER_MAX_BUFFER_LENGTH];
 
@@ -90,9 +90,9 @@ namespace Tag2D
         // FIXME: BUG: source_locations it's showing the data from Logger class.
 
         std::cerr << m_Options->error_prefix << AddColorToText("!r") << AddColorToText(buffer) << "\n";
-        std::cerr << AddColorToText("!r- File:!w ") << FILE_NAME << "\n";
-        std::cerr << AddColorToText("!r- Function:!w ") << FUNCTION_NAME << "\n";
-        std::cerr << AddColorToText("!r- Line:!w ") << FILE_NAME << LOGGER_DEFAULT_COLOR << "\n";
+        std::cerr << AddColorToText("!r- File:!w ") << FILE_NAME(source_location) << "\n";
+        std::cerr << AddColorToText("!r- Function:!w ") << FUNCTION_NAME(source_location) << "\n";
+        std::cerr << AddColorToText("!r- Line:!w ") << LINE(source_location) << LOGGER_DEFAULT_COLOR << "\n";
     }
 
     std::string Logger::AddColorToText(const char* buffer)
@@ -100,9 +100,9 @@ namespace Tag2D
         if (strlen(buffer) > LOGGER_MAX_BUFFER_LENGTH)
         {
             std::cerr << "[CRITICAL INTERNAL ERROR: "
-                << FUNCTION_NAME
-                << "::"
-                << LINE
+                << FUNCTION_NAME(std::source_location::current())
+                    << "::"
+                    << LINE(std::source_location::current())
                 << "] Logger::Buffer length has exceeded the maximum value: "
                 << LOGGER_MAX_BUFFER_LENGTH
                 << "\n";
@@ -113,16 +113,14 @@ namespace Tag2D
         std::string stringBuffer(buffer);
         size_t iPos = std::string::npos;
 
+        int i = 0;
+
         for (const auto& [key, color] : COLOR_MAP)
         {
-            iPos = stringBuffer.find(key);
-
-            if (iPos == std::string::npos)
+            while ((iPos = stringBuffer.find(key)) != std::string::npos)
             {
-                continue;
+                stringBuffer.replace(iPos, key.size(), color);
             }
-
-            stringBuffer.replace(iPos, key.size(), color);
         }
 
         return stringBuffer;
