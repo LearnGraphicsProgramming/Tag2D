@@ -3,8 +3,7 @@
 
 #include "ApplicationEvents.h"
 #include "Window.h"
-#include "BaseEntity.h"
-#include "Entity.h"
+#include "Entities/BaseEntity.h"
 
 #include <memory>
 #include <vector>

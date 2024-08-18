@@ -29,26 +29,26 @@ namespace Tag2D
 
 		m_Window->SetVSync(true);
 
-		std::shared_ptr<Entity> entity1 = std::make_shared<Entity>();
-		entity1->m_Vertices = std::vector<float>({
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
-			});
-		entity1->SetEntityClassName("triangle_1");
+		//std::shared_ptr<Entity> entity1 = std::make_shared<Entity>();
+		//entity1->m_Vertices = std::vector<float>({
+		//	-0.5f, -0.5f, 0.0f,
+		//	0.5f, -0.5f, 0.0f,
+		//	0.0f, 0.5f, 0.0f
+		//	});
+		//entity1->SetEntityClassName("triangle_1");
 
-		m_Entities.emplace_back(std::move(entity1));
+		//m_Entities.emplace_back(std::move(entity1));
 
-		std::shared_ptr<Entity> entity2 = std::make_shared<Entity>();
-		entity2->m_Vertices = std::vector<float>({
-			0.5f, 0.5f, 1.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
-			});
+		//std::shared_ptr<Entity> entity2 = std::make_shared<Entity>();
+		//entity2->m_Vertices = std::vector<float>({
+		//	0.5f, 0.5f, 1.0f,
+		//	0.5f, -0.5f, 0.0f,
+		//	0.0f, 0.5f, 0.0f
+		//	});
 
-		entity2->SetEntityClassName("triangle_2");
+		//entity2->SetEntityClassName("triangle_2");
 
-		m_Entities.push_back(std::move(entity2));
+		//m_Entities.push_back(std::move(entity2));
 		
 	}
 
