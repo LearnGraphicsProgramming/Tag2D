@@ -1,7 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "BaseEntity.h"
+#include "Entities/BaseEntity.h"
 #include <vector>
 #include <memory>
 
