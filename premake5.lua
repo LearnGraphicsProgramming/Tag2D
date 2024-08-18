@@ -1,7 +1,7 @@
 workspace "Tag2D"
 	architecture "x64"
 
-	configurations { "Debug", "Release", "Dist" } -- Debug, Release, Distribution. Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
+	configurations { "Debug", "Release", "Dist" } -- Debug has symbols, Release has optimizations, Dist has no symbols and optimizations.
 	startproject "Client"
 
 	-- Workspace-wide build options for MSVC

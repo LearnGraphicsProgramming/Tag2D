@@ -4,7 +4,8 @@
 #include "Console.h"
 #include "Globals.h"
 #include "FrameCounter.h"
-#include "Logger.h"
+#include "../../common/src/Logger.h"
+#include <iostream>
 
 int main()
 {
@@ -21,9 +22,8 @@ int main()
 	Tag2D::Console console = Tag2D::Console();
 	Tag2D::FrameCounter frameCounter = Tag2D::FrameCounter();
 
-	console.RegisterCommand("enable_fps_output", [&frameCounter]() { frameCounter.SetConstantShowFrames(true); });
-	console.RegisterCommand("disable_fps_output", [&frameCounter]() { frameCounter.SetConstantShowFrames(false); });
-
+	console.RegisterCommand("toggle_fps_output", [&frameCounter]() { frameCounter.ToggleConstantFrameDisplay(); });
+	
 	server.RegisterOnFrameCallback([&console]() { console.OnFrame(); });
 	server.RegisterOnFrameCallback([&frameCounter]() { frameCounter.OnFrame(); });
 		 
