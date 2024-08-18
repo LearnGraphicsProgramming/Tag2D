@@ -87,9 +87,6 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        // FIXME: Create colors contants to be accessed directly from map so won't iterate everytime we need to use color in the Logger class.
-        // FIXME: BUG: source_locations it's showing the data from Logger class.
-
         std::cerr << m_Options->error_prefix << COLOR_MAP[LOGGER_COLOR_RED].second << AddColorToText(buffer) << "\n";
         std::cerr << COLOR_MAP[LOGGER_COLOR_RED].second << "- File: " << COLOR_MAP[LOGGER_COLOR_WHITE].second << FILE_NAME(source_location) << "\n";
         std::cerr << COLOR_MAP[LOGGER_COLOR_RED].second << "- Function: " << COLOR_MAP[LOGGER_COLOR_WHITE].second << FUNCTION_NAME(source_location) << "\n";
