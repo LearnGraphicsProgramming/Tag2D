@@ -33,6 +33,7 @@ namespace Tag2D
         { "!g", "\x1B[32m" },
         { "!y", "\x1B[33m" },
         { "!w", "\x1B[97m" },
+        { "!bc", "\x1B[96m" }
     };
 
     Logger::Logger() {}
