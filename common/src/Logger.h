@@ -7,7 +7,6 @@
 #include <filesystem>
 #include <cstring>
 
-#define LOGGER_DEFAULT_COLOR "\033[0m"
 #define LOGGER_MAX_BUFFER_LENGTH UINT8_MAX
 
 #define FILE_NAME_HELPER(file) (strrchr(file, '\\') ? strrchr(file, '\\') + 1 : (strrchr(file, '/') ? strrchr(file, '/') + 1 : file))
@@ -24,6 +23,18 @@
 namespace Tag2D
 {
 	extern const std::pair<std::string, std::string> COLOR_MAP[];
+	
+
+	// Enum for key colors
+	enum
+	{
+		LOGGER_COLOR_DEFAULT = 0,
+		LOGGER_COLOR_RED,
+		LOGGER_COLOR_GREEN,
+		LOGGER_COLOR_YELLOW,
+		LOGGER_COLOR_WHITE,
+		LOGGER_COLOR_BRIGHT_CYAN
+	};
 
 	struct LoggerOptions
 	{

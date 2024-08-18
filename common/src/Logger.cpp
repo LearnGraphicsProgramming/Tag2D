@@ -28,7 +28,7 @@ namespace Tag2D
 
     const std::pair<std::string, std::string> COLOR_MAP[] =
     {
-        { "!d", LOGGER_DEFAULT_COLOR},
+        { "!d", "\033[0m"},
         { "!r", "\x1B[31m" },
         { "!g", "\x1B[32m" },
         { "!y", "\x1B[33m" },
@@ -63,7 +63,7 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cout << m_Options->info_prefix << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cout << m_Options->info_prefix << AddColorToText(buffer) << COLOR_MAP[LOGGER_COLOR_DEFAULT].second << "\n";
     }
 
     void Logger::warning(const std::source_location& source_location, const char* fmt ...)
@@ -75,7 +75,7 @@ namespace Tag2D
         std::vsnprintf(buffer, sizeof(buffer), fmt, args);
         va_end(args);
 
-        std::cout << m_Options->warning_prefix << AddColorToText("!y(") << FILE_NAME(source_location) << "::" << LINE(source_location) << AddColorToText(")!w ") << AddColorToText(buffer) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cout << m_Options->warning_prefix << COLOR_MAP[LOGGER_COLOR_YELLOW].second << "(" << FILE_NAME(source_location) << "::" << LINE(source_location) << ") " << COLOR_MAP[LOGGER_COLOR_WHITE].second << AddColorToText(buffer) << COLOR_MAP[LOGGER_COLOR_DEFAULT].second << "\n";
     }
 
     void Logger::error(const std::source_location& source_location, const char* fmt ...)
@@ -90,10 +90,10 @@ namespace Tag2D
         // FIXME: Create colors contants to be accessed directly from map so won't iterate everytime we need to use color in the Logger class.
         // FIXME: BUG: source_locations it's showing the data from Logger class.
 
-        std::cerr << m_Options->error_prefix << AddColorToText("!r") << AddColorToText(buffer) << "\n";
-        std::cerr << AddColorToText("!r- File:!w ") << FILE_NAME(source_location) << "\n";
-        std::cerr << AddColorToText("!r- Function:!w ") << FUNCTION_NAME(source_location) << "\n";
-        std::cerr << AddColorToText("!r- Line:!w ") << LINE(source_location) << LOGGER_DEFAULT_COLOR << "\n";
+        std::cerr << m_Options->error_prefix << COLOR_MAP[LOGGER_COLOR_RED].second << AddColorToText(buffer) << "\n";
+        std::cerr << COLOR_MAP[LOGGER_COLOR_RED].second << "- File: " << COLOR_MAP[LOGGER_COLOR_WHITE].second << FILE_NAME(source_location) << "\n";
+        std::cerr << COLOR_MAP[LOGGER_COLOR_RED].second << "- Function: " << COLOR_MAP[LOGGER_COLOR_WHITE].second << FUNCTION_NAME(source_location) << "\n";
+            std::cerr << COLOR_MAP[LOGGER_COLOR_RED].second << "- Line: " << COLOR_MAP[LOGGER_COLOR_WHITE].second << LINE(source_location) << COLOR_MAP[LOGGER_COLOR_DEFAULT].second << "\n";
     }
 
     std::string Logger::AddColorToText(const char* buffer)
