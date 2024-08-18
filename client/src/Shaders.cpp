@@ -38,7 +38,7 @@ namespace Tag2D
 
 		glUseProgram(m_ShaderProgram);
 
-		log_info("!gShaders initialized succesfully!");
+		log_info("Shaders initialized succesfully");
 
 		return true;
 	}
