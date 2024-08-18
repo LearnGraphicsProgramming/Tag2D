@@ -29,7 +29,6 @@ namespace Tag2D
 		virtual ~WindowProperties() = default;
 	};
 
-
 	class Window
 	{
 	public:

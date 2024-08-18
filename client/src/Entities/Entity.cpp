@@ -45,4 +45,11 @@ namespace Tag2D
 	{
 		log_info("Entity::OnClose");
 	}
+	void Entity::SetVertices(const std::initializer_list<float>& initializer_list)
+	{
+		for (const float& vertice : initializer_list)
+		{
+			m_Vertices.emplace_back(vertice);
+		}
+	}
 }

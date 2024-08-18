@@ -31,15 +31,10 @@ namespace Tag2D
 
 	private:
 		static Application m_Instance;
-
 		std::shared_ptr<Window> m_Window;
+		std::unordered_map<ApplicationEventType, std::vector<EventCallbackFn>> m_EventsCallbacks;
 
 		std::vector<std::shared_ptr<BaseEntity>> m_Entities;
-		
-		std::unordered_map<
-			ApplicationEventType,
-			std::vector<EventCallbackFn>
-		> m_EventsCallbacks;
 	};
 }
 

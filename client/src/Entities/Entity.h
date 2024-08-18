@@ -18,11 +18,12 @@ namespace Tag2D
 		void OnUpdate() override;
 		void OnClose() override;
 
-		std::vector<float> m_Vertices;
+		void SetVertices(const std::initializer_list<float>& initializer_list);
 
 	private:
 		unsigned int m_VertexBufferObject;
 		unsigned int m_VertexArrayObject;
+		std::vector<float> m_Vertices;
 	};
 }
 

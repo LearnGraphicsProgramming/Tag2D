@@ -30,7 +30,7 @@ namespace Tag2D
 		m_Window->SetVSync(true);
 
 		std::shared_ptr<Entity> entity1 = std::make_shared<Entity>();
-		entity1->m_Vertices = std::vector<float>({
+		entity1->SetVertices({
 			-0.5f, -0.5f, 0.0f,
 			0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f
@@ -40,11 +40,11 @@ namespace Tag2D
 		m_Entities.emplace_back(std::move(entity1));
 
 		std::shared_ptr<Entity> entity2 = std::make_shared<Entity>();
-		entity2->m_Vertices = std::vector<float>({
+		entity2->SetVertices({
 			0.5f, 0.5f, 1.0f,
 			0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f
-			});
+		});
 
 		entity2->SetEntityClassName("triangle_2");
 
