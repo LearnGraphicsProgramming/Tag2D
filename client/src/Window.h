@@ -36,6 +36,7 @@ namespace Tag2D
 		virtual ~Window();
 
 		virtual void OnUpdate();
+		virtual void OnUpdatePost();
 
 		virtual void SetVSync(bool enabled);
 		virtual bool IsVSync() const { return m_Data.VSync; }

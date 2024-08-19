@@ -79,7 +79,12 @@ namespace Tag2D
 
 	void Window::OnUpdate()
 	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
 
+	void Window::OnUpdatePost()
+	{
+		
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 

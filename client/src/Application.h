@@ -5,6 +5,7 @@
 #include "Window.h"
 #include "Entities/BaseEntity.h"
 #include "Entities/Entity.h"
+#include "Entities/Cube.h"
 
 #include <memory>
 #include <vector>
