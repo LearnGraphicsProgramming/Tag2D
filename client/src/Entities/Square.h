@@ -1,15 +1,15 @@
-#ifndef CUBE_ENTITY_H
-#define CUBE_ENTITY_H
+#ifndef SQUARE_ENTITY_H
+#define SQUARE_ENTITY_H
 
 #include "Entities/BaseEntity.h"
 
 namespace Tag2D
 {
-	class Cube : public BaseEntity
+	class Square : public BaseEntity
 	{
 	public:
-		Cube();
-		~Cube();
+		Square();
+		~Square();
 	
 	private:
 		void OnStart() override;
@@ -19,4 +19,4 @@ namespace Tag2D
 }
 
 
-#endif // CUBE_ENTITY_H
+#endif // SQUARE_ENTITY_H

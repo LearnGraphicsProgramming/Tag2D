@@ -29,8 +29,8 @@ namespace Tag2D
 
 		m_Window->SetVSync(true);
 
-		std::shared_ptr<Cube> cube = std::make_shared<Cube>();
-		m_Entities.push_back(std::move(cube));
+		std::shared_ptr<Square> square = std::make_shared<Square>();
+		m_Entities.push_back(std::move(square));
 	}
 
 	void Application::Run()

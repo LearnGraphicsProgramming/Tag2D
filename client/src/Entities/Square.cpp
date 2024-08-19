@@ -1,8 +1,8 @@
-#include "Cube.h"
+#include "Square.h"
 
 namespace Tag2D
 {
-	Cube::Cube()
+	Square::Square()
 	{
 		SetVertices({
 			-0.5f,  0.5f, 0.0f, // Top-left corner
@@ -14,20 +14,20 @@ namespace Tag2D
 		SetEntityClassName("cube_1");
 	}
 
-	Cube::~Cube()
+	Square::~Square()
 	{
 	}
 
-	void Cube::OnStart()
+	void Square::OnStart()
 	{
 	
 	}
 
-	void Cube::OnUpdate()
+	void Square::OnUpdate()
 	{
 	}
 
-	void Cube::OnClose()
+	void Square::OnClose()
 	{
 	}
 }

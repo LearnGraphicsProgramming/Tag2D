@@ -4,7 +4,7 @@
 #include "ApplicationEvents.h"
 #include "Window.h"
 #include "Entities/BaseEntity.h"
-#include "Entities/Cube.h"
+#include "Entities/Square.h"
 
 #include <memory>
 #include <vector>
