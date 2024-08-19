@@ -1,7 +1,7 @@
 [submodule "client/external/glfw"]
-	path = client/external/glfw
-	url = https://github.com/CMDR-JohnAlex/glfw.git
-	branch = master
+    path = client/external/glfw
+    url = https://github.com/CMDR-JohnAlex/glfw.git
+    branch = master
 
 [submodule "common/external/glm"]
 	path = common/external/glm
