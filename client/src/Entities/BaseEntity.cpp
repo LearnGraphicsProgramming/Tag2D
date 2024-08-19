@@ -17,6 +17,8 @@ namespace Tag2D
 		});
 
 		m_OnCloseCallbackID = Application::Instance().RegisterApplicationCallback(ApplicationEventType::Close, [this]() { OnClose(); });
+
+		SetEntityClassName("player_cube");
 	}
 
 	BaseEntity::~BaseEntity()
