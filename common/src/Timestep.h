@@ -2,7 +2,6 @@
 #define TIME_STEP_H
 
 #include <chrono>
-#include <iostream>
 
 class Timestep
 {

@@ -47,6 +47,7 @@ namespace Tag2D
 	}
 	bool UserInput::GetInput(std::string& buffer)
 	{
+		CheckInput();
 		if (m_PressedEnter)
 		{
 			buffer = std::string(m_Input);

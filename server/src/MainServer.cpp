@@ -28,6 +28,5 @@ int main()
 	server.RegisterOnFrameCallback([&frameCounter]() { frameCounter.OnFrame(); });
 		 
 	server.Start();
-
 	server.Stop();
 }

@@ -24,8 +24,6 @@ namespace Tag2D
 {
 	extern const std::pair<std::string, std::string> COLOR_MAP[];
 	
-
-	// Enum for key colors
 	enum
 	{
 		LOGGER_COLOR_DEFAULT = 0,

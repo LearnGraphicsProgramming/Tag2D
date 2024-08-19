@@ -1,5 +1,5 @@
 #include "Socket.h"
-#include "../../common/src/Logger.h"
+#include "Logger.h"
 
 namespace Tag2D
 {
@@ -53,7 +53,6 @@ namespace Tag2D
 		m_SocketAddrStruct.sin_port = htons(m_Port); // port
 		inet_pton(AF_INET, m_Address, &m_SocketAddrStruct.sin_addr); // adding the address (defined in pc.h)
 
-
 		// Trying to bind the informations we want to the socket
 		if (bind(m_ListenSocket, (sockaddr*)&m_SocketAddrStruct, sizeof(m_SocketAddrStruct)) == SOCKET_ERROR)
 		{
@@ -69,11 +68,9 @@ namespace Tag2D
 			return false;
 		}
 
-		log_info("!gServer listening at %s:%i", m_Address, m_Port);
-		
+		log_info("!gServer listening at %s:%i", m_Address, m_Port);	
 		return true;
 	}
-
 
 	// This function it's registered in the server and will be called at every frame
 	void Socket::OnFrame() const

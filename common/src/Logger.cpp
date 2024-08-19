@@ -37,7 +37,6 @@ namespace Tag2D
     };
 
     Logger::Logger() {}
-
     Logger::~Logger() {}
 
     Logger& Logger::Instance()
@@ -99,8 +98,8 @@ namespace Tag2D
         {
             std::cerr << "[CRITICAL INTERNAL ERROR: "
                 << FUNCTION_NAME(std::source_location::current())
-                    << "::"
-                    << LINE(std::source_location::current())
+                << "::"
+                << LINE(std::source_location::current())
                 << "] Logger::Buffer length has exceeded the maximum value: "
                 << LOGGER_MAX_BUFFER_LENGTH
                 << "\n";

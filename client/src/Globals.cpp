@@ -7,6 +7,7 @@ void InitGlobals()
 
 void InitSingletons()
 {
+	// TODO: We should statically set the prefixes and logger options.
 	std::shared_ptr<Tag2D::LoggerOptions> options = std::make_shared<Tag2D::LoggerOptions>();
 	options->info_prefix = "!w[INFO]!d ";
 	options->warning_prefix = "!y[WARNING]!d ";

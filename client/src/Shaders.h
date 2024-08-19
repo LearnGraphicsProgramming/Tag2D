@@ -21,4 +21,4 @@ namespace Tag2D
 	};
 }
 
-#endif
+#endif // SHADERS_H

@@ -1,7 +1,7 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 
-#include "../../common/src/pc.h"
+#include "pc.h"
 
 #include <cstdint>
 #include <string>
@@ -20,8 +20,7 @@
 #define SOCKET_ERROR -1
 #endif
 
-// TODO: Add non-blocking option
-
+// TODO: Add non-blocking flag for socket
 namespace Tag2D
 {
 	// Multi-platform Socket object

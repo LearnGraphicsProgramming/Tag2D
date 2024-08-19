@@ -33,9 +33,7 @@ namespace Tag2D
 			if (m_ShouldCount)
 			{
 				m_FrameCounter++;
-
 				m_CurrentTimestep.Update();
-
 			
 				if (m_CurrentTimestep.GetTime() - m_LastSavedTimestep.GetTime() == 1)
 				{

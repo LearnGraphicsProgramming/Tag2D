@@ -27,6 +27,7 @@ namespace Tag2D
 
 	private:
 		UserInput m_UserInput;
+		std::string m_Input;
 
 		std::unordered_map<std::string, CommandCallback> m_Commands;
 	};

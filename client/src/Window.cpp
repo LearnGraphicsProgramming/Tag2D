@@ -82,7 +82,6 @@ namespace Tag2D
 
 	void Window::OnUpdatePost()
 	{
-		
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 
@@ -124,7 +123,6 @@ namespace Tag2D
 	void Window::LoadIcon(const std::string& iconPath)
 	{
 		constexpr uint8_t CHANNELS = 4; // 3 - RGB (jpeg), 4 - RGBA (png)
-
 		m_Data.Icon[0].pixels = stbi_load(iconPath.c_str(), &m_Data.Icon[0].width, &m_Data.Icon[0].height, 0, CHANNELS);
 
 		if (stbi_failure_reason())
@@ -134,7 +132,6 @@ namespace Tag2D
 		}
 
 		glfwSetWindowIcon(m_Window, 1, &m_Data.Icon[0]);
-
 		stbi_image_free(m_Data.Icon[0].pixels);
 	}
 }

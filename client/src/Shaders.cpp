@@ -59,7 +59,6 @@ namespace Tag2D
 
 		char infoLog[512];
 		int success;
-
 		glGetShaderiv(m_VertexShader, GL_COMPILE_STATUS, &success);
 
 		if (!success)

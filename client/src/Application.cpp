@@ -5,15 +5,9 @@ namespace Tag2D
 {
 	Application Application::m_Instance;
 
-	Application::Application()
-	{
-		//m_Entities.resize(CLIENT_MAX_ENTITIES);
-	}
+	Application::Application() {}
 
-	Application::~Application()
-	{
-		//m_Entities.clear();
-	}
+	Application::~Application() {}
 
 	Application& Application::Instance()
 	{
@@ -23,10 +17,10 @@ namespace Tag2D
 	void Application::Init()
 	{
 		{
-			Tag2D::WindowProperties properties = { "Tag2D Client", "assets/icon/tag2d_icon.png", 1280, 720 };
+			WindowProperties properties = { "Tag2D Client", "assets/icon/tag2d_icon.png", 1280, 720 };
 			m_Window = std::make_shared<Tag2D::Window>(properties);
 		}
-
+		
 		m_Window->SetVSync(true);
 
 		std::shared_ptr<Square> square = std::make_shared<Square>();
@@ -45,14 +39,12 @@ namespace Tag2D
 		}
 
 		TriggerEventCallback(ApplicationEventType::Close);
-
 		glfwTerminate();
 	}
 
 	uint8_t Application::RegisterApplicationCallback(const ApplicationEventType& type, EventCallbackFn function)
 	{
 		m_EventsCallbacks[type].emplace_back(function);
-
 		return m_EventsCallbacks[type].size() - 1;
 	}
 
@@ -77,7 +69,6 @@ namespace Tag2D
 	void Application::TriggerEventCallback(const ApplicationEventType& type) const
 	{
 		auto it = m_EventsCallbacks.find(type);
-
 		if (it != m_EventsCallbacks.end())
 		{
 			const std::vector<EventCallbackFn>& callbacksVector = it->second;

@@ -3,18 +3,8 @@
 
 #include <string>
 
-#define GetEventName(type) (std::string("Name index: " + std::to_string(static_cast<int>(type)))
-
-//const char* WINDOW_EVENT_DICTIONARY[] =
-//{
-//	{ "Window::OnStart" },
-//	{ "Window::OnUpdate" },
-//	{ "Window::OnClose" }
-//};
-
 namespace Tag2D
 {
-
 	enum class ApplicationEventType
 	{
 		Start = 0,
@@ -22,7 +12,5 @@ namespace Tag2D
 		Close
 	};
 }
-
-
 
 #endif // APPLICATION_EVENTS_H

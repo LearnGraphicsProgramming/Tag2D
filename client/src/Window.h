@@ -8,7 +8,6 @@
 #include <GLFW/glfw3.h>
 #include <string>
 
-
 namespace Tag2D
 {
 	struct WindowProperties
@@ -56,7 +55,6 @@ namespace Tag2D
 		virtual const bool ShouldClose() const { return glfwWindowShouldClose(m_Window) != 0; }
 
 		virtual void LoadIcon(const std::string& iconPath);
-
 		static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 
 	private:
