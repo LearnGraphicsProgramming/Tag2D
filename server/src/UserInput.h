@@ -23,7 +23,7 @@
 #if defined(WINDOWS)
 #include <conio.h>
 
-#define GetKeyboardChar getch
+#define GetKeyboardChar _getch
 #define ENTER_KEY_CODE 13
 #endif
 
