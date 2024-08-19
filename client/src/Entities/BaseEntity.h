@@ -44,7 +44,7 @@ namespace Tag2D
 		unsigned int m_VertexBufferObject;
 		unsigned int m_VertexArrayObject;
 		std::vector<float> m_Vertices;
-		int m_VerticesNum;
+		size_t m_VerticesNum;
 
 		bool m_EntityHasNoVerticesMessageSent;
 	};
