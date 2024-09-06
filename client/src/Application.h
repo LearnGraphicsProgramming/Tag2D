@@ -3,8 +3,6 @@
 
 #include "ApplicationEvents.h"
 #include "Window.h"
-#include "Entities/BaseEntity.h"
-#include "Entities/Square.h"
 
 #include <memory>
 #include <vector>
@@ -34,7 +32,6 @@ namespace Tag2D
 		std::shared_ptr<Window> m_Window;
 		std::unordered_map<ApplicationEventType, std::vector<EventCallbackFn>> m_EventsCallbacks;
 
-		std::vector<std::shared_ptr<BaseEntity>> m_Entities;
 	};
 }
 
