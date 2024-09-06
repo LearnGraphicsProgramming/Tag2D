@@ -1,15 +1,21 @@
 #include "VertexArray.h"
+#include "Logger.h"
 
 namespace Tag2D
 {
-	VertexArray::VertexArray()
+	VertexArray::VertexArray() 
+		: m_RendererID(0)
 	{
-		glGenVertexArrays(1, &m_RendererID);
-		glBindVertexArray(m_RendererID);
 	}
 
 	VertexArray::~VertexArray()
 	{
+	}
+
+	void VertexArray::Init()
+	{
+		glGenVertexArrays(1, &m_RendererID);
+		glBindVertexArray(m_RendererID);
 	}
 
 	void VertexArray::Bind() const
@@ -29,8 +35,6 @@ namespace Tag2D
 
 	void VertexArray::AssingData(const VertexBuffer& vertex_buffer)
 	{
-		m_Data.push_back(vertex_buffer);
-
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		glEnableVertexAttribArray(0);
 	}

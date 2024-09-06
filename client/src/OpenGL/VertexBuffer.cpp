@@ -1,11 +1,11 @@
 #include "VertexBuffer.h"
+#include "Logger.h"
 
 namespace Tag2D
 {
 	VertexBuffer::VertexBuffer()
 		: m_RendererID(0)
 	{
-		glGenBuffers(1, &m_RendererID);
 	}
 
 	VertexBuffer::~VertexBuffer()
@@ -17,6 +17,11 @@ namespace Tag2D
 		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 	
+	void VertexBuffer::Init()
+	{
+		glGenBuffers(1, &m_RendererID);
+	}
+
 	void VertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);

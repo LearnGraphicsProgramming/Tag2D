@@ -12,6 +12,7 @@ namespace Tag2D
 		VertexBuffer();
 		~VertexBuffer();
 
+		void Init();
 		void Bind() const;
 		void Unbind() const;
 		void AssignVertices(const void* data, unsigned int size);

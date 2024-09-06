@@ -1,12 +1,11 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "ApplicationEvents.h"
 #include "Window.h"
+#include "Scene.h"
 
 #include <memory>
 #include <vector>
-#include <functional>
 
 namespace Tag2D
 {
@@ -14,7 +13,6 @@ namespace Tag2D
 
 	class Application
 	{
-		using EventCallbackFn = std::function<void()>;
 	public:
 		Application();
 		~Application();
@@ -23,15 +21,11 @@ namespace Tag2D
 		void Init();
 		void Run();
 
-		uint8_t RegisterApplicationCallback(const ApplicationEventType& type, EventCallbackFn function);
-		void UnregisterApplicationCallback(std::unordered_map<ApplicationEventType, int>& class_callback_ids);
-		void TriggerEventCallback(const ApplicationEventType& type) const;
-
 	private:
 		static Application m_Instance;
 		std::shared_ptr<Window> m_Window;
-		std::unordered_map<ApplicationEventType, std::vector<EventCallbackFn>> m_EventsCallbacks;
 
+		std::unique_ptr<Scene> m_ActiveScene;
 	};
 }
 

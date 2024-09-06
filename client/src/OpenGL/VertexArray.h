@@ -21,6 +21,7 @@ namespace Tag2D
 		VertexArray();
 		~VertexArray();
 
+		void Init();
 		void Bind() const;
 		void Unbind() const;
 		void Draw() const;
