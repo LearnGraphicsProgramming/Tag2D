@@ -88,8 +88,6 @@ namespace Tag2D
 	{
 		std::filesystem::path ShaderPath = std::filesystem::path("./Assets/Shaders/") / file_name.data();
 
-		log_info("%s - %s", file_name.data(), ShaderPath.string().c_str());
-
 		if (!std::filesystem::exists(ShaderPath))
 		{
 			log_error("Failed to load !y%s!d file. Current path:!w %s", ShaderPath.string().c_str(), std::filesystem::current_path().string().c_str());
