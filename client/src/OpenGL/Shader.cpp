@@ -56,8 +56,6 @@ namespace Tag2D
 		glDeleteShader(m_VertexShader);
 		glDeleteShader(m_FragmentShader);
 
-		glUseProgram(m_ShaderProgram);
-
 		log_info("[Shader] Initialized succesfully");
 
 		return true;
@@ -84,9 +82,15 @@ namespace Tag2D
 		return static_cast<bool>(Success);
 	}
 
+	void Shader::Bind() const
+	{
+		glUseProgram(m_ShaderProgram);
+	}
+
 	std::string Shader::LoadShaderSourceFromFile(const std::string_view& file_name)
 	{
-		std::filesystem::path ShaderPath = std::filesystem::path("./Assets/Shaders/") / file_name.data();
+		// FIXME: Hack to load the file from src folder for VS debugging.
+		std::filesystem::path ShaderPath = std::filesystem::path("./src/OpenGL/Shaders/") / file_name.data();
 
 		if (!std::filesystem::exists(ShaderPath))
 		{

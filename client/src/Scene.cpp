@@ -47,6 +47,7 @@ namespace Tag2D
 
 	void Scene::OnUpdate()
 	{
+		m_Shader.Bind();
 		Draw();
 	}
 

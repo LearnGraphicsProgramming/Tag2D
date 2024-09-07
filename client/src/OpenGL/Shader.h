@@ -13,6 +13,7 @@ namespace Tag2D
 
 		const bool InitShader();
 		const bool CompileShader(unsigned int& index, std::string& source, int type);
+		void Bind() const;
 
 		std::string LoadShaderSourceFromFile(const std::string_view& file_name);
 
