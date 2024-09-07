@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Entities/Triangle.h>
+#include <OpenGL/Shader.h>
 
 #include <vector>
 
@@ -20,5 +21,6 @@ namespace Tag2D
 	
 	private:
 		std::vector<Triangle> m_Triangles;
+		Shader m_Shader;
 	};
 }

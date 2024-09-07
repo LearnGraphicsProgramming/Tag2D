@@ -9,7 +9,5 @@ int main()
 
 	Tag2D::Application::Instance().Init();
 
-	log_info("Game application initialized succesfully")
-
 	Tag2D::Application::Instance().Run();
 }

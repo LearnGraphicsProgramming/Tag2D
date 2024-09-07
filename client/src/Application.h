@@ -19,6 +19,7 @@ namespace Tag2D
 		static Application& Instance();
 
 		void Init();
+		void Shutdown();
 		void Run();
 
 	private:

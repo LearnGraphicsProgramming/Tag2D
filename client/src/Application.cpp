@@ -22,13 +22,19 @@ namespace Tag2D
 		}
 		
 		m_Window->SetVSync(true);
+
 		m_ActiveScene = std::make_unique<Scene>();
 		m_ActiveScene->Init();
 	}
 
+	void Application::Shutdown()
+	{
+		m_ActiveScene.release();
+		m_Window->Close();
+	}
+
 	void Application::Run()
 	{
-
 		while (!m_Window->ShouldClose())
 		{
 			m_Window->OnUpdate();

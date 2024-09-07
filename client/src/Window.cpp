@@ -14,7 +14,7 @@ namespace Tag2D
 	}
 
 	Window::Window(const WindowProperties& properties)
-		: m_Shaders(Shaders()), m_Data{}
+		: m_Data{}
 	{
 		m_Data.Title = properties.Title;
 		m_Data.IconPath = properties.IconPath;
@@ -52,16 +52,6 @@ namespace Tag2D
 		if (!status)
 		{
 			log_error("Failed to initialize glad!");
-		}
-
-		try {
-			m_Shaders.InitShaders();
-		}
-		catch (std::exception& e) {
-			log_error("Initializing of one of the shader failed. Closing application..");
-			glfwTerminate();
-
-			return;
 		}
 		
 		glfwSetWindowUserPointer(m_Window, &m_Data);

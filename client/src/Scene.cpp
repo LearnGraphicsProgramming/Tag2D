@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Logger.h"
+#include "Application.h"
 
 namespace Tag2D
 {
@@ -12,6 +13,12 @@ namespace Tag2D
 
 	void Scene::Init()
 	{
+		if (!m_Shader.InitShader())
+		{
+			Application::Instance().Shutdown();
+			return;
+		}
+
 		float positions[] = {
 			 0.5f,  0.5f, 0.0f,  // Top-right corner of the first triangle
 			 0.9f,  0.0f, 0.0f,  // Middle-right edge
