@@ -7,10 +7,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Tag2D
 {
 	Shader::Shader()
-		: m_VertexShader(0), m_FragmentShader(0), m_ShaderProgram(0) {}
+		: m_VertexShader(0), m_FragmentShader(0), m_ShaderProgram(0)
+	{}
 
 	Shader::~Shader()
 	{
@@ -23,14 +27,14 @@ namespace Tag2D
 		std::string VertexShader = LoadShaderSourceFromFile(vertex_shader_file);
 		if (VertexShader.size() == 0)
 		{
-			log_warning("Vertex Shader initialization failed, closing program");
+			log_warning("Vertex Shader initialization failed");
 			return false;
 		}
 		
 		std::string FragmentShader = LoadShaderSourceFromFile(fragment_shader_file);
 		if (FragmentShader.size() == 0)
 		{
-			log_warning("Fragment Shader initialization failed, closing program");
+			log_warning("Fragment Shader initialization failed");
 			return false;
 		}
 
@@ -88,6 +92,34 @@ namespace Tag2D
 	void Shader::Unbind() const
 	{	
 		glUseProgram(0);
+	}
+
+	unsigned int Shader::GetUniformLocation(const std::string_view& name) const
+	{
+		unsigned int location = glGetUniformLocation(m_ShaderProgram, name.data());
+
+		if (location == -1)
+		{
+			log_error("Failed to get uniform location of !y%s", name.data());
+		}
+
+		// TODO: Cache locations in a STL container (maybe unordered map?).
+
+		return location;
+	}
+
+	void Shader::SetUniformMatrix4fv(const std::string_view& name, const glm::mat4& value) const
+	{
+		unsigned int location = GetUniformLocation(name);
+
+		if (location != -1)
+		{
+			glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
+		}
+		else
+		{
+			log_warning("Value for !y%s!d has not been set", name.data());
+		}
 	}
 
 	std::string Shader::LoadShaderSourceFromFile(const std::string_view& file_name)

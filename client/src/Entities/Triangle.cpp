@@ -4,7 +4,10 @@
 namespace Tag2D
 {
 	Triangle::Triangle()
-		: m_EntityID(0) {}
+		: m_EntityID(0)
+	
+	{
+	}
 
 	Triangle::~Triangle() {}
 

@@ -1,9 +1,11 @@
 #pragma once
 
-#include <Entities/Triangle.h>
+#include "Camera.h"
+#include "Entities/Triangle.h"
 #include <OpenGL/Shader.h>
 
 #include <vector>
+#include <memory>
 
 namespace Tag2D
 {
@@ -20,7 +22,10 @@ namespace Tag2D
 		void Draw();
 	
 	private:
+		std::shared_ptr<Shader> m_Shader;
+
 		std::vector<Triangle> m_Triangles;
-		Shader m_Shader;
+	
+		Camera m_Camera;
 	};
 }
