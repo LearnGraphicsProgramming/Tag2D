@@ -10,6 +10,8 @@ namespace Tag2D
 
 	VertexArray::~VertexArray()
 	{
+		// FIXME: Using glDeleteVertexArrays or glDeleteBuffers in VertexArray and VertexBuffer desctructors will delete the buffers
+		//glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void VertexArray::Init()
@@ -25,6 +27,7 @@ namespace Tag2D
 
 	void VertexArray::Unbind() const
 	{
+		glBindVertexArray(0);
 	}
 
 	void VertexArray::Draw() const

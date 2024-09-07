@@ -14,21 +14,20 @@ namespace Tag2D
 
 	Shader::~Shader()
 	{
+		Unbind();
 		glDeleteProgram(m_ShaderProgram);
 	}
 
-	const bool Shader::InitShader()
+	const bool Shader::InitShader(const std::string_view& vertex_shader_file, const std::string_view& fragment_shader_file)
 	{
-		std::string VertexShader = LoadShaderSourceFromFile("vertex_shader.frag");
-
+		std::string VertexShader = LoadShaderSourceFromFile(vertex_shader_file);
 		if (VertexShader.size() == 0)
 		{
 			log_warning("Vertex Shader initialization failed, closing program");
 			return false;
 		}
 		
-		std::string FragmentShader = LoadShaderSourceFromFile("fragment_shader.frag");
-
+		std::string FragmentShader = LoadShaderSourceFromFile(fragment_shader_file);
 		if (FragmentShader.size() == 0)
 		{
 			log_warning("Fragment Shader initialization failed, closing program");
@@ -57,7 +56,6 @@ namespace Tag2D
 		glDeleteShader(m_FragmentShader);
 
 		log_info("[Shader] Initialized succesfully");
-
 		return true;
 	}
 
@@ -87,11 +85,15 @@ namespace Tag2D
 		glUseProgram(m_ShaderProgram);
 	}
 
+	void Shader::Unbind() const
+	{	
+		glUseProgram(0);
+	}
+
 	std::string Shader::LoadShaderSourceFromFile(const std::string_view& file_name)
 	{
 		// FIXME: Hack to load the file from src folder for VS debugging.
 		std::filesystem::path ShaderPath = std::filesystem::path("./src/OpenGL/Shaders/") / file_name.data();
-
 		if (!std::filesystem::exists(ShaderPath))
 		{
 			log_error("Failed to load !y%s!d file. Current path:!w %s", ShaderPath.string().c_str(), std::filesystem::current_path().string().c_str());
@@ -99,7 +101,6 @@ namespace Tag2D
 		}
 
 		std::ifstream File(ShaderPath, std::ios::in | std::ios::binary);
-
 		if (!File.is_open())
 		{
 			log_error("Failed to open !y%s!d file. Current path:!w %s", ShaderPath.string().c_str(), std::filesystem::current_path().string().c_str());
@@ -108,7 +109,6 @@ namespace Tag2D
 
 		std::string FileContent{ std::istreambuf_iterator<char>(File), std::istreambuf_iterator<char>()};
 		File.close();
-
 		return FileContent;
 	}
 }

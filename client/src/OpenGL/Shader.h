@@ -11,9 +11,10 @@ namespace Tag2D
 		Shader();
 		~Shader();
 
-		const bool InitShader();
+		const bool InitShader(const std::string_view& vertex_shader_file, const std::string_view& fragment_shader_file);
 		const bool CompileShader(unsigned int& index, std::string& source, int type);
 		void Bind() const;
+		void Unbind() const;
 
 		std::string LoadShaderSourceFromFile(const std::string_view& file_name);
 

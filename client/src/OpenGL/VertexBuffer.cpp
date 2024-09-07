@@ -10,6 +10,7 @@ namespace Tag2D
 
 	VertexBuffer::~VertexBuffer()
 	{
+		//glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void VertexBuffer::AssignVertices(const void* data, unsigned int size)

@@ -13,19 +13,21 @@ namespace Tag2D
 
 	void Scene::Init()
 	{
-		if (!m_Shader.InitShader())
+		if (!m_Shader.InitShader("vertex_shader.ver", "fragment_shader.frag"))
 		{
 			Application::Instance().Shutdown();
 			return;
 		}
 
-		float positions[] = {
+		float positions[] =
+		{
 			 0.5f,  0.5f, 0.0f,  // Top-right corner of the first triangle
 			 0.9f,  0.0f, 0.0f,  // Middle-right edge
 			 0.5f, -0.5f, 0.0f,  // Bottom-right corner
 		};
 
-		float positions2[] = {
+		float positions2[] =
+		{
 			-0.5f,  0.5f, 0.0f,  // Top-left corner of the second triangle
 			-0.9f,  0.0f, 0.0f,  // Middle-left edge
 			-0.5f, -0.5f, 0.0f,  // Bottom-left corner
@@ -42,7 +44,6 @@ namespace Tag2D
 		triangle2.AssignVertices(positions2, sizeof(positions2));
 		triangle2.SetID(m_Triangles.size() + 1);
 		m_Triangles.push_back(triangle2);
-
 	}
 
 	void Scene::OnUpdate()
