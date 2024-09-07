@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "Logger.h"
+#include "Input.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
@@ -67,6 +68,7 @@ namespace Tag2D
 
 	void Window::OnUpdate()
 	{
+		Input::Instance().ProcessInput(m_Window);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 

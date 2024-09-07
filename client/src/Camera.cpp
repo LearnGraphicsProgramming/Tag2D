@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "Logger.h"
+#include "Input.h"
 
 namespace Tag2D
 {
@@ -26,5 +27,25 @@ namespace Tag2D
 	void Camera::OnUpdate()
 	{
 		m_OrtoProjection.BindMVPMatrix();
+	
+		if (Input::Instance().KeyPress(GLFW_KEY_W))
+		{
+			log_info("Key w pressed");
+		}
+
+		if (Input::Instance().KeyPress(GLFW_KEY_A))
+		{
+			log_info("Key a pressed");
+		}
+
+		if (Input::Instance().KeyPress(GLFW_KEY_S))
+		{
+			log_info("Key s pressed");
+		}
+
+		if (Input::Instance().KeyPress(GLFW_KEY_D))
+		{
+			log_info("Key d pressed");
+		}
 	}
 }
