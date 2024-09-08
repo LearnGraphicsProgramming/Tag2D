@@ -18,7 +18,13 @@ namespace Tag2D
 		void OnUpdate();
 
 	private:
+		void CheckMovement();
+
+	private:
 		std::shared_ptr<Shader> m_Shader;
 		OrthographicProjection m_OrtoProjection;
+
+		glm::vec3 m_Position;
+		float m_Speed;
 	};
 }

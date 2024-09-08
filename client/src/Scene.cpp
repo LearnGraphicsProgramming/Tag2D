@@ -58,11 +58,9 @@ namespace Tag2D
 
 	void Scene::Draw()
 	{
-		m_Shader->Bind();
-
 		for (const auto& triangle : m_Triangles)
 		{
-			triangle.Draw(); // Pass the model matrix
+			triangle.Draw();
 		}
 	}
 }

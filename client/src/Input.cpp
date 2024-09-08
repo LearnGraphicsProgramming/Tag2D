@@ -19,6 +19,8 @@ namespace Tag2D
         m_PressedKeys[GLFW_KEY_A] = glfwGetKey(window, GLFW_KEY_A);
         m_PressedKeys[GLFW_KEY_S] = glfwGetKey(window, GLFW_KEY_S);
         m_PressedKeys[GLFW_KEY_D] = glfwGetKey(window, GLFW_KEY_D);
+        m_PressedKeys[GLFW_KEY_Z] = glfwGetKey(window, GLFW_KEY_Z);
+        m_PressedKeys[GLFW_KEY_X] = glfwGetKey(window, GLFW_KEY_X);
     }
 
     bool Input::KeyPress(int key_code)

@@ -19,9 +19,9 @@ namespace Tag2D
 		CalculateMVPMatrix();
 	}
 
-	void OrthographicProjection::SetView(const float& value)
+	void OrthographicProjection::SetView(const glm::mat4& value)
 	{
-		m_View = glm::mat4(value);
+		m_View = value;
 		CalculateMVPMatrix();
 	}
 

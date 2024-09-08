@@ -17,7 +17,7 @@ namespace Tag2D
 
 		void SetShader(const std::shared_ptr<Shader>& shader);
 		void SetProjection(const float& left, const float& right, const float& bottom, const float& top, const float& z_near, const float& z_far);
-		void SetView(const float& value);
+		void SetView(const glm::mat4& value);
 		void SetModel(const float& value);
 		void BindMVPMatrix();
 
