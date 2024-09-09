@@ -12,10 +12,9 @@ namespace Tag2D
 		VertexBuffer();
 		~VertexBuffer();
 
-		void Init();
 		void Bind() const;
 		void Unbind() const;
-		void AssignVertices(const void* data, unsigned int size);
+		void AssignVertices(const float* data, unsigned int size);
 
 	private:
 		unsigned int m_RendererID;

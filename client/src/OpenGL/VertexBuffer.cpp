@@ -1,28 +1,23 @@
 #include "VertexBuffer.h"
 #include "Logger.h"
 
+
 namespace Tag2D
 {
 	VertexBuffer::VertexBuffer()
 		: m_RendererID(0)
-	{
-	}
+	{}
 
 	VertexBuffer::~VertexBuffer()
-	{
-		//glDeleteBuffers(1, &m_RendererID);
-	}
+	{}
 
-	void VertexBuffer::AssignVertices(const void* data, unsigned int size)
+	void VertexBuffer::AssignVertices(const float* data, unsigned int size)
 	{
+		glGenBuffers(1, &m_RendererID);
+		Bind();
 		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 	
-	void VertexBuffer::Init()
-	{
-		glGenBuffers(1, &m_RendererID);
-	}
-
 	void VertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);

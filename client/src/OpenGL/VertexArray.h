@@ -29,6 +29,5 @@ namespace Tag2D
 
 	private:
 		unsigned int m_RendererID;
-		std::vector<VertexBuffer> m_Data;
 	};
 }
